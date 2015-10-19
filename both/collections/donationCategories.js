@@ -6,5 +6,11 @@ CategorySchema = new SimpleSchema({
     description: {
         type: String,
         label: 'The description of the donation category'
+    },
+    links: {
+        type: [String],
+        label: 'List of links to external purchasing sites'
     }
 });
+
+Schema.CategorySchema = CategorySchema;

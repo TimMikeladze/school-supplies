@@ -30,7 +30,15 @@ WishlistCategorySchema = new SimpleSchema({
     },
     requested: {
         type: Number,
-        label: 'The total requested amount of the category'
+        label: 'The total requested amount of the category',
+        min: 1,
+        optional: true
+    },
+    isUnlimited: {
+        type: Boolean,
+        label: 'Flag determining if the requested field does not have a total amount',
+        defaultValue: false,
+        optional: true
     },
     received: {
         type: Number,
@@ -38,17 +46,17 @@ WishlistCategorySchema = new SimpleSchema({
     },
     notes: {
         type: String,
-        label: 'Notes pertaining to the requested category'
+        label: 'Notes pertaining to the requested category',
+        optional: true
     }
 });
 
 DonationDriveSchema = new SimpleSchema({
-    // TODO(lnw) Something id? Cant read the picture...
-    startdate: {
+    startDate: {
         type: Date,
         label: 'The start date of the donation drive'
     },
-    enddate: {
+    endDate: {
         type: Date,
         label: 'The end date of the donation drive'
     },
@@ -96,9 +104,9 @@ SchoolSchema = new SimpleSchema({
         label: 'The list of images for the school profile'
     },
     schoolType: {
-        type: String, // Elementary, Middle, High
+        type: [String],
         label: 'The type of school',
-        allowedValues: ['Elementary', 'Middle', 'High']
+        allowedValues: ['Kindergarten', 'Lower', 'Middle', 'Upper', 'University']
     },
     donationDrives: {
         type: [DonationDriveSchema],
@@ -108,7 +116,9 @@ SchoolSchema = new SimpleSchema({
         type: [String],
         label: 'The requested categories'
     }
-    // TODO(lnw) money
-    // TODO(lnw) something under money? cant read it
-    // TODO(lnw) redundant money
 });
+
+Schema.SchoolSchema = SchoolSchema;
+Schema.DonationDriveSchema = DonationDriveSchema;
+Schema.WishlistCategorySchema = WishlistCategorySchema;
+Schema.AddressSchema = AddressSchema;

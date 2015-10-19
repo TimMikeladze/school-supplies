@@ -5,14 +5,22 @@ DonatedCategorySchema = new SimpleSchema({
     },
     quantity: {
         type: Number,
-        label: 'The quantity of the item donated'
+        label: 'The quantity of the item donated',
+        min: 1,
+        optional: true
+    },
+    money: {
+        type: Number,
+        label: 'The amount of money being donated',
+        allowedValues: ['USD'],
+        min: 1,
+        optional: true
     }
 });
 
 DonationSchema = new SimpleSchema({
     donorId: {
         type: String,
-        optional: true,
         label: 'The id of the donor'
     },
     schoolId: {
@@ -42,3 +50,6 @@ DonationSchema = new SimpleSchema({
     // donor notes
     // shipping details
 });
+
+Schema.DonationSchema = DonationSchema;
+Schema.DonatedCategorySchema = DonatedCategorySchema;
