@@ -1,0 +1,10 @@
+<template name="categoryView">
+    <li class="collection-item avatar">
+        <span class="title">{{title}}</span>
+        <p>{{description}}</p>
+        {{#each links}}
+            <a href="/{{this}}">{{this}}</a>
+        {{/each}}
+        <button class="delete btn wave-effect waves-light teal">Delete</button>
+    </li>
+</template>

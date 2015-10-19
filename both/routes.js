@@ -11,9 +11,7 @@ FlowRouter.route('/categories', {
     name: 'categories',
     action: function () {
         BlazeLayout.render('layout', {
-            header: 'header',
-            content: 'categories',
-            footer: 'footer'
+            main: 'categories'
         });
     }
 });

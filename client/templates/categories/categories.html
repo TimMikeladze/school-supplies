@@ -1,12 +1,15 @@
 <template name="categories">
-    {{# each}}
-
-
-    {{/each}}
-    {{# autoForm collection="Collections.Categories" id="createCategoryForm" type="method" meteormethod="insertCategory"}}
-        {{> afFormGroup name="title"}}
-        {{> afFormGroup name="description"}}
-        {{> afFormGroup name="links"}}
-        <button class="btn waves-effect waves-light blue accent-2" type="submit">Create</button>
-    {{/autoForm}}
+    <div class="container">
+        <h2>Categories</h2>
+         {{> quickForm collection="Collections.Categories" id="createCategoryForm" type="method" meteormethod="categories/insertCategory"}}
+    </div>
+    {{#if Template.subscriptionsReady}}
+        <ul class="collection">
+            {{#each categories}}
+                {{> categoryView}}
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>Loading...</p>
+    {{/if}}
 </template>
