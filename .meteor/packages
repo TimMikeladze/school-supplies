@@ -20,7 +20,7 @@ aldeed:collection2
 aldeed:simple-schema
 reactive-var
 aldeed:autoform
-materialize:materialize
+materialize:materialize@=0.97.0
 useraccounts:materialize
 gildaspk:autoform-materialize
 matb33:collection-hooks
