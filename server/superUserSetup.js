@@ -8,7 +8,7 @@ Meteor.startup(function () {
             password: 'password'
         });
 
-        Roles.addUsersToRoles(id, ['adminRole'], 'adminGroup');
+        Roles.addUsersToRoles(id, ['admin']);
     } else {
         console.log("Super user account exists.");
     }
