@@ -31,3 +31,12 @@ FlowRouter.route('/sign-in', {
         });
     }
 });
+
+FlowRouter.route('/categoryEdit/:categoryId', {
+    name: 'categoryEdit',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'categoryEdit'
+        });
+    }
+});

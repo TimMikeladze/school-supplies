@@ -1,5 +1,5 @@
 // Categories templates
-Template.categories.onCreated(function (params) {
+Template.categories.onCreated(function () {
     var self = this;
     self.autorun(function () {
        self.subscribe('categories');
@@ -19,8 +19,18 @@ Template.categoryView.events({
     }
 });
 
-Template.categoryView.helpers({
-    links: function (linkName) {
-        return
+// CategoryEdit templates
+Template.categoryEdit.onCreated(function () {
+    var self = this;
+    self.autorun(function () {
+        var categoryId = FlowRouter.getParam('categoryId');
+        self.subscribe('categories', categoryId);
+    });
+});
+
+Template.categoryEdit.helpers({
+    categoryDoc: function () {
+        var categoryId = FlowRouter.getParam('categoryId');
+        return Collections.Categories.findOne({ _id: categoryId });
     }
 });

@@ -2,9 +2,10 @@
     <li class="collection-item avatar">
         <span class="title">{{title}}</span>
         <p>{{description}}</p>
-        {{#each links}}
-            <a href="/{{this}}">{{this}}</a>
+        {{#each this.links}}
+            <a href="/{{this}}" target="_blank">{{this}}</a>
         {{/each}}
-        <button class="delete btn wave-effect waves-light teal">Delete</button>
+        <a class="s8 col btn wave-effect waves-light teal" href="/categoryEdit/{{_id}}">Edit</a>
+        <button class="delete s8 col btn wave-effect waves-light teal">Delete</button>
     </li>
 </template>

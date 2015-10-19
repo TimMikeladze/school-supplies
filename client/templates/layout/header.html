@@ -1,21 +1,24 @@
 <template name="header">
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <a id="logo-container" href="/" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
                 {{#if currentUser }}
-                    <a href="#" class="nav-username">
-                        {{ fullName }}
-                    </a>
+                    <li><a href="#" class="nav-username">
+                        {{ currentUser.username }}
+                    </a></li>
                 {{else}}
-                    <a class="waves-effect waves-light btn" href="/sign-up">Sign up</a>
-                    <a class="waves-effect waves-light btn" href="/sign-in">Login</a>
+                    <li><a class="waves-effect waves-light btn" href="/sign-up">Sign up</a></li>
+                    <li><a class="waves-effect waves-light btn" href="/sign-in">Login</a></li>
                 {{/if}}
+
+                <li><a href="/categories">Categories</a></li>
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="/sign-in">Login</a></li>
                 <li><a href="/sign-up">Sign up</a></li>
+                <li><a href="/categories">Categories</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
