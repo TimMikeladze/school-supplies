@@ -12,3 +12,6 @@ Schemas.CategorySchema = new SimpleSchema({
         label: 'List of links to external purchasing sites'
     }
 });
+
+Collections.Categories = new Mongo.Collection('categories');
+Collections.Categories.attachSchema(Schemas.CategorySchema);
