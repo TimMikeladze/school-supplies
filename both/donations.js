@@ -1,4 +1,4 @@
-DonatedCategorySchema = new SimpleSchema({
+var DonatedCategorySchema = new SimpleSchema({
     categoryId: {
         type: String,
         label: 'The id of the donated category'
@@ -18,7 +18,7 @@ DonatedCategorySchema = new SimpleSchema({
     }
 });
 
-DonationSchema = new SimpleSchema({
+var DonationSchema = new SimpleSchema({
     donorId: {
         type: String,
         label: 'The id of the donor'

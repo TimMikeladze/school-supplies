@@ -1,4 +1,4 @@
-AddressSchema = new SimpleSchema({
+var AddressSchema = new SimpleSchema({
     houseNumber: {
         type: String,
         label: 'The house number of the address'
@@ -23,7 +23,7 @@ AddressSchema = new SimpleSchema({
     }
 });
 
-WishlistCategorySchema = new SimpleSchema({
+var WishlistCategorySchema = new SimpleSchema({
     categoryId: {
         type: String,
         label: 'The id of the requested category'
@@ -51,7 +51,7 @@ WishlistCategorySchema = new SimpleSchema({
     }
 });
 
-DonationDriveSchema = new SimpleSchema({
+var DonationDriveSchema = new SimpleSchema({
     startDate: {
         type: Date,
         label: 'The start date of the donation drive'
@@ -78,7 +78,7 @@ DonationDriveSchema = new SimpleSchema({
     }
 });
 
-SchoolSchema = new SimpleSchema({
+var SchoolSchema = new SimpleSchema({
     title: {
         type: String,
         label: 'The title of the school'

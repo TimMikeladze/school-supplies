@@ -1,4 +1,4 @@
-CategorySchema = new SimpleSchema({
+var CategorySchema = new SimpleSchema({
     title: {
         type: String,
         label: 'The title of the donation category'
