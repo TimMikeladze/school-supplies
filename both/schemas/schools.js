@@ -1,7 +1,7 @@
 Schemas.AddressSchema = new SimpleSchema({
     houseNumber: {
         type: String,
-        label: 'The house number of the address'
+        label: 'The number of the address'
     },
     street: {
         type: String,
