@@ -1,4 +1,4 @@
-var DonatedCategorySchema = new SimpleSchema({
+Schemas.DonatedCategorySchema = new SimpleSchema({
     categoryId: {
         type: String,
         label: 'The id of the donated category'
@@ -12,13 +12,12 @@ var DonatedCategorySchema = new SimpleSchema({
     money: {
         type: Number,
         label: 'The amount of money being donated',
-        allowedValues: ['USD'],
         min: 1,
         optional: true
     }
 });
 
-var DonationSchema = new SimpleSchema({
+Schemas.DonationSchema = new SimpleSchema({
     donorId: {
         type: String,
         label: 'The id of the donor'
@@ -42,7 +41,7 @@ var DonationSchema = new SimpleSchema({
         allowedValues: ['Pending', 'Received', 'Not Received']
     },
     donatedCategories: {
-        type: [DonatedCategorySchema],
+        type: [Schemas.DonatedCategorySchema],
         label: 'The list of donated categories'
     }
     // TODO(lnw) what was the purpose of these three?
@@ -50,6 +49,3 @@ var DonationSchema = new SimpleSchema({
     // donor notes
     // shipping details
 });
-
-Schema.DonationSchema = DonationSchema;
-Schema.DonatedCategorySchema = DonatedCategorySchema;

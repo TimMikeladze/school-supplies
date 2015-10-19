@@ -1,4 +1,4 @@
-var CategorySchema = new SimpleSchema({
+Schemas.CategorySchema = new SimpleSchema({
     title: {
         type: String,
         label: 'The title of the donation category'
@@ -12,5 +12,3 @@ var CategorySchema = new SimpleSchema({
         label: 'List of links to external purchasing sites'
     }
 });
-
-Schema.CategorySchema = CategorySchema;

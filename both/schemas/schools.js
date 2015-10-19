@@ -1,4 +1,4 @@
-var AddressSchema = new SimpleSchema({
+Schemas.AddressSchema = new SimpleSchema({
     houseNumber: {
         type: String,
         label: 'The house number of the address'
@@ -23,7 +23,7 @@ var AddressSchema = new SimpleSchema({
     }
 });
 
-var WishlistCategorySchema = new SimpleSchema({
+Schemas.WishlistCategorySchema = new SimpleSchema({
     categoryId: {
         type: String,
         label: 'The id of the requested category'
@@ -51,7 +51,7 @@ var WishlistCategorySchema = new SimpleSchema({
     }
 });
 
-var DonationDriveSchema = new SimpleSchema({
+Schemas.DonationDriveSchema = new SimpleSchema({
     startDate: {
         type: Date,
         label: 'The start date of the donation drive'
@@ -73,12 +73,12 @@ var DonationDriveSchema = new SimpleSchema({
         label: 'Flag determining if the donation drive is active'
     },
     wishlist: {
-        type: [WishlistCategorySchema],
+        type: [Schemas.WishlistCategorySchema],
         label: 'The requested supplies of the donation drive'
     }
 });
 
-var SchoolSchema = new SimpleSchema({
+Schemas.SchoolSchema = new SimpleSchema({
     title: {
         type: String,
         label: 'The title of the school'
@@ -88,7 +88,7 @@ var SchoolSchema = new SimpleSchema({
         label: 'The description of the school'
     },
     address: {
-        type: AddressSchema,
+        type: Schemas.AddressSchema,
         label: 'The address of the school'
     },
     createdBy: {
@@ -109,7 +109,7 @@ var SchoolSchema = new SimpleSchema({
         allowedValues: ['Kindergarten', 'Lower', 'Middle', 'Upper', 'University']
     },
     donationDrives: {
-        type: [DonationDriveSchema],
+        type: [Schemas.DonationDriveSchema],
         label: 'The list of donation drives'
     },
     searchableCategories: {
@@ -117,8 +117,3 @@ var SchoolSchema = new SimpleSchema({
         label: 'The requested categories'
     }
 });
-
-Schema.SchoolSchema = SchoolSchema;
-Schema.DonationDriveSchema = DonationDriveSchema;
-Schema.WishlistCategorySchema = WishlistCategorySchema;
-Schema.AddressSchema = AddressSchema;
