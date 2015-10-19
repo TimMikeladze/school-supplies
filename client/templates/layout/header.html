@@ -12,13 +12,18 @@
                     <li><a class="waves-effect waves-light btn" href="/sign-in">Login</a></li>
                 {{/if}}
 
-                <li><a href="/categories">Categories</a></li>
+                {{#if isInRole 'adminRole'}}
+                    <li><a href="/categories">Categories</a></li>
+                {{/if}}
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
+                {{#if isInRole 'adminRole'}}
+                    <li><a href="/categories">Categories</a></li>
+                {{/if}}
+
                 <li><a href="/sign-in">Login</a></li>
                 <li><a href="/sign-up">Sign up</a></li>
-                <li><a href="/categories">Categories</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
