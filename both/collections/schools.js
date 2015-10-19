@@ -97,7 +97,8 @@ SchoolSchema = new SimpleSchema({
     },
     schoolType: {
         type: String, // Elementary, Middle, High
-        label: 'The type of school'
+        label: 'The type of school',
+        allowedValues: ['Elementary', 'Middle', 'High']
     },
     donationDrives: {
         type: [DonationDriveSchema],

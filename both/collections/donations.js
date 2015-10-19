@@ -20,7 +20,7 @@ DonationSchema = new SimpleSchema({
         label: 'The id of the recipient school'
     },
     anonymous: {
-        type: Boolean
+        type: Boolean,
         defaultValue: false,
         label: 'Flag determining if the donor is anonymous'
     },
@@ -29,8 +29,9 @@ DonationSchema = new SimpleSchema({
         label: 'The id of the donation drive'
     },
     status: {
-        type: String, // [Pending, Received, Not Received]
-        label: 'The status of the donation'
+        type: String,
+        label: 'The status of the donation',
+        allowedValues: ['Pending', 'Received', 'Not Received']
     },
     donatedCategories: {
         type: [DonatedCategorySchema],
