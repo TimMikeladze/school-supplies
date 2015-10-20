@@ -24,25 +24,30 @@ FlowRouter.route('/sign-in', {
 });
 
 //TODO(lnw) protect admin routes
-FlowRouter.route('/admin/categories', {
-    name: 'categories',
+var adminSection = FlowRouter.group({
+    prefix: '/admin',
     triggersEnter: [function(context, redirect) {
         var params = context.params;
 
         //TODO(lnw) add this form
-        var newRoute = 'invalid-permissions';
+        var newRoute = '/403';
 
         console.log(context);
         console.log(params);
 
         console.log(Meteor.userId());
-        console.log(Roles.userIsInRole(this.userId, Meteor.settings.adminRoles));
+        console.log(Roles.userIsInRole(Meteor.userId(), Meteor.settings.adminRoles));
 
 
-        if (!Roles.userIsInRole(this.userId, Meteor.settings.adminRoles)) {
+        if (Roles.userIsInRole(Meteor.userId(), Meteor.settings.adminRoles)) {
             redirect(newRoute, params);
+            //FlowRouter.go(FlowRouter.path(newRoute));
         }
-    }],
+    }]
+});
+
+adminSection.route('/categories', {
+    name: 'categories',
     action: function () {
         BlazeLayout.render('layout', {
             main: 'categories'
@@ -50,7 +55,7 @@ FlowRouter.route('/admin/categories', {
     }
 });
 
-FlowRouter.route('/admin/categoryEdit/:categoryId', {
+adminSection.route('/categoryEdit/:categoryId', {
     name: 'categoryEdit',
     action: function () {
         BlazeLayout.render('layout', {
@@ -59,11 +64,20 @@ FlowRouter.route('/admin/categoryEdit/:categoryId', {
     }
 });
 
-FlowRouter.route('/invalid-permissions', {
-    name: 'invalid-permissions',
+FlowRouter.notFound = {
+    name: '404',
     action: function () {
         BlazeLayout.render('layout', {
-            main: 'invalid-permissions'
+            main: '404'
         });
     }
+};
+
+FlowRouter.route('/403', {
+    name: '403',
+    action: function () {
+       BlazeLayout.render('layout', {
+           main: '403'
+       });
+   }
 });

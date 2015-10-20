@@ -8,21 +8,21 @@
                         {{ currentUser.username }}
                     </a></li>
                 {{else}}
-                    <li><a class="waves-effect waves-light btn" href="/sign-up">Sign up</a></li>
-                    <li><a class="waves-effect waves-light btn" href="/sign-in">Login</a></li>
+                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-up'}}">Sign up</a></li>
+                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-in'}}">Login</a></li>
                 {{/if}}
 
                 {{#if isInRole 'admin'}}
-                    <li><a href="/admin/categories">Categories</a></li>
+                    <li><a href="{{pathFor '/admin/categories'}}">Categories</a></li>
                 {{/if}}
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
                 {{#if isInRole 'admin'}}
-                    <li><a href="/admin/categories">Categories</a></li>
+                    <li><a href="{{pathFor '/admin/categories'}}">Categories</a></li>
                 {{/if}}}
-                <li><a href="/sign-in">Login</a></li>
-                <li><a href="/sign-up">Sign up</a></li>
+                <li><a href="{{pathFor '/sign-in'}}">Login</a></li>
+                <li><a href="{{pathFor '/sign-up'}}">Sign up</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
