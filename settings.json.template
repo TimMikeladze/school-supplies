@@ -3,6 +3,8 @@
   "admin": {
     "email": "admin@admin.com",
     "password": "password",
-    "username": "Admin"
+    "userName": "admin",
+    "firstName": "Tom",
+    "lastName": "Admin"
   }
 }

@@ -71,7 +71,9 @@ Schemas.DonationDriveSchema = new SimpleSchema({
     },
     active: {
         type: Boolean,
-        label: 'Flag determining if the donation drive is active'
+        label: 'Flag determining if the donation drive is active',
+        defaultValue: false,
+        optional: true
     },
     wishlist: {
         type: [Schemas.WishlistCategorySchema],
@@ -142,8 +144,6 @@ Schemas.SchoolSchema = new SimpleSchema({
 
 Collections.Schools = new Mongo.Collection('schools');
 Collections.Schools.attachSchema(Schemas.SchoolSchema);
-
-
 Collections.Schools.initEasySearch(['name'], {
     'limit': 20,
     'use': 'mongo-db'
