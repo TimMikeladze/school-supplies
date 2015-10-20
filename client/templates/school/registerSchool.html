@@ -1,0 +1,17 @@
+<template name="registerSchool">
+    <div class="container">
+        <h4>Register a school</h4>
+        {{#autoForm schema=registerSchoolSchema id="registerSchoolForm" type="method" meteormethod="registerSchool"}}
+            {{> afQuickField name="name"}}
+            {{> afQuickField name="numberOfStudents"}}
+            {{> afQuickField name="district"}}
+            {{> afQuickField name="address.buildingNumber"}}
+            {{> afQuickField name="address.street"}}
+            {{> afQuickField name="address.city"}}
+            {{> afQuickField name="address.state"}}
+            {{> afQuickField name="address.zipCode"}}
+            {{> afFieldInput name="gradeLevels" type="select-checkbox-inline" }}
+            <button type="submit" class="btn waves-effect waves-light">Submit school</button>
+        {{/autoForm}}
+    </div>
+</template>

@@ -1,7 +1,7 @@
 Schemas.AddressSchema = new SimpleSchema({
-    houseNumber: {
+    buildingNumber: {
         type: String,
-        label: 'The number of the address'
+        label: 'The building number of the address'
     },
     street: {
         type: String,
@@ -11,12 +11,13 @@ Schemas.AddressSchema = new SimpleSchema({
         type: String,
         label: 'The city of the address'
     },
+    // Should be a dropdown
     state: {
         type: String,
         label: 'The state of the address',
         regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
     },
-    zipcode: {
+    zipCode: {
         type: String,
         label: 'The zipcode of the address',
         regEx: SimpleSchema.RegEx.ZipCode
@@ -79,41 +80,65 @@ Schemas.DonationDriveSchema = new SimpleSchema({
 });
 
 Schemas.SchoolSchema = new SimpleSchema({
-    title: {
+    name: {
         type: String,
-        label: 'The title of the school'
-    },
-    description: {
-        type: String,
-        label: 'The description of the school'
+        label: 'The name of the school'
     },
     address: {
         type: Schemas.AddressSchema,
         label: 'The address of the school'
     },
+    //TODO(tim) fix date logic
     createdBy: {
         type: String,
-        label: 'The user id who created the school'
+        label: 'The user id who created the school',
+        optional: true
     },
     createdAt: {
         type: Date,
-        label: 'The date when the school account was created'
+        label: 'The date when the school account was created',
+        optional: true
     },
     images: {
         type: [Object],
-        label: 'The list of images for the school profile'
+        label: 'The list of images for the school profile',
+        optional: true
     },
-    schoolType: {
+    //TODO(tim) Clean up this code. Use settings for grade levels
+    gradeLevels: {
         type: [String],
-        label: 'The type of school',
-        allowedValues: ['Kindergarten', 'Lower', 'Middle', 'Upper', 'University']
+        label: 'The grade levels in the school',
+        allowedValues: ['kindergarten', 'lower', 'middle', 'upper', 'college'],
+        autoform: {
+            options: function () {
+                return {
+                    kindergarten: 'Kindergarten',
+                    lower: 'Lower school',
+                    middle: 'Middle school',
+                    upper: 'Upper school',
+                    college: 'College'
+                };
+            }
+        }
+    },
+    district: {
+        type: String,
+        label: 'The school\'s district'
+    },
+    numberOfStudents: {
+        type: Number,
+        label: 'The number of students in the school',
+        min: 0
     },
     donationDrives: {
         type: [Schemas.DonationDriveSchema],
-        label: 'The list of donation drives'
+        label: 'The list of donation drives',
+        optional: true
     },
-    searchableCategories: {
-        type: [String],
-        label: 'The requested categories'
+    schoolAdmins: {
+        type: [String]
     }
 });
+
+Collections.Schools = new Mongo.Collection('schools');
+Collections.Schools.attachSchema(Schemas.SchoolSchema);

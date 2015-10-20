@@ -53,6 +53,14 @@ adminSection.route('/categoryEdit/:categoryId', {
     }
 });
 
+FlowRouter.route('/register-school', {
+    action: function (params, queryParams) {
+        BlazeLayout.render('layout', {
+            main: 'registerSchool'
+        });
+    }
+});
+
 FlowRouter.notFound = {
     name: '404',
     action: function () {
