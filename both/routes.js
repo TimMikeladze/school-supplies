@@ -1,3 +1,11 @@
+var ensureSignedIn = function (context, redirect) {
+    var params = context.params;
+
+    if (!Meteor.userId()) {
+        redirect('/sign-in', params);
+    }
+};
+
 FlowRouter.route('/', {
     action: function (params, queryParams) {
         BlazeLayout.render('layout', {
@@ -23,15 +31,15 @@ FlowRouter.route('/sign-in', {
     }
 });
 
-//TODO(lnw) protect admin routes
 var adminSection = FlowRouter.group({
     prefix: '/admin',
-    triggersEnter: [function(context, redirect) {
-        var params = context.params;
+    triggersEnter: [ensureSignedIn,
+        function(context, redirect) {
+            var params = context.params;
 
-        if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
-            redirect('/403', params);
-        }
+            if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
+                redirect('/403', params);
+            }
     }]
 });
 
@@ -77,4 +85,18 @@ FlowRouter.route('/403', {
            main: '403'
        });
    }
+});
+
+var homeSection = FlowRouter.group({
+    prefix: '/home',
+    triggersEnter: [ensureSignedIn]
+});
+
+homeSection.route('/', {
+    name: 'home',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'home'
+        })
+    }
 });

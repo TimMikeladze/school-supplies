@@ -1,7 +1,7 @@
 <template name="header">
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="{{pathFor '/'}}" class="brand-logo">Logo</a>
+            <a id="logo-container" href="{{pathFor homeUrl}}" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
                 {{#if currentUser }}
                     <li><a href="#" class="nav-username">
