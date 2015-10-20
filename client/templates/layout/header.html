@@ -20,9 +20,17 @@
             <ul id="nav-mobile" class="side-nav">
                 {{#if isInRole 'admin'}}
                     <li><a href="{{pathFor '/admin/categories'}}">Categories</a></li>
+
                 {{/if}}}
+
+                {{#if currentUser}}
+                    <li><a href="#" class="nav-username">
+                        {{ fullName }}
+                    </a></li>
+                {{else}}
                 <li><a href="{{pathFor '/sign-in'}}">Login</a></li>
                 <li><a href="{{pathFor '/sign-up'}}">Sign up</a></li>
+                {{/if}}
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
