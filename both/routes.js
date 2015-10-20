@@ -90,6 +90,15 @@ signedIn.route('/donationDrives', {
     }
 });
 
+signedIn.route('/donationDriveEdit/:donationDriveId', {
+    name: 'donationDriveEdit',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'donationDriveEdit'
+        });
+    }
+});
+
 adminSection.route('/categories', {
     name: 'categories',
     action: function () {

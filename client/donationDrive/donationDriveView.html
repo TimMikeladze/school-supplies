@@ -1,0 +1,10 @@
+<template name="donationDriveView">
+    <li class="collection-item avatar">
+        <span class="title">{{title}}</span>
+        <p>{{description}}</p>
+        {{#if canEditDrive}}
+            <a class="s8 col btn wave-effect waves-light teal" href="{{pathFor '/donationDriveEdit/:donationDriveId' donationDriveId=_id}}">Edit</a>
+            <button class="delete s8 col btn wave-effect waves-light teal">Delete</button>
+        {{/if}}
+    </li>
+</template>

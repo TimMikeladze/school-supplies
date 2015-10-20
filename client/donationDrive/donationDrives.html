@@ -1,12 +1,15 @@
-<tempate name="donationDrives">
+<template name="donationDrives">
     <div class="container">
         <h2>Donation drives</h2>
-        {{> quickForm collection="Collections.DonationDrives" id="createDonationDrive" type="insert" fields="startDate, endDate, title, description, wishlist" omitFields="active"}}
+        {{#if Template.subscriptionsReady}}
+            {{> quickForm collection="Collections.DonationDrives" id="createDonationDrive" type="insert" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
+            <ul class="collection">
+                {{#each donationDrives}}
+                    {{> donationDriveView}}
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>Loading...</p>
+        {{/if}}
     </div>
-    {{#if Template.subscriptionsReady}}
-    <ul class="collection">
-    </ul>
-    {{else}}
-    <p>Loading...</p>
-    {{/if}}
-</tempate>
+</template>

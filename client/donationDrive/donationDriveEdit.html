@@ -1,0 +1,10 @@
+<template name="donationDriveEdit">
+    <h2>Edit</h2>
+    {{#if Template.subscriptionsReady}}
+        {{#with donationDoc}}
+            {{> quickForm collection="Collections.DonationDrives" doc=this id="donationDriveEditForm" type="update" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
+        {{/with}}
+    {{else}}
+        <p>Loading...</p>
+    {{/if}}
+</template>

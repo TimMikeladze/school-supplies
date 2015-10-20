@@ -3,7 +3,6 @@ Template.registerHelper('fullName', function () {
     return profile.firstName + ' ' + profile.lastName;
 });
 
-
 Template.registerHelper('homeUrl', function () {
     return !Meteor.userId() ? '/' : '/home';
 });
