@@ -12,13 +12,6 @@ Template.categories.helpers({
     }
 });
 
-// CategoryView templates
-Template.categoryView.events({
-    'click .delete': function () {
-        Meteor.call('categories/removeCategory', this._id);
-    }
-});
-
 // CategoryEdit templates
 Template.categoryEdit.onCreated(function () {
     var self = this;
