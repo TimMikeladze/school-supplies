@@ -4,9 +4,5 @@
     "email": "admin@admin.com",
     "password": "password",
     "username": "Admin"
-  },
-  "roles": {
-    "admin": "admin",
-    "adminList": ["admin"]
   }
 }
