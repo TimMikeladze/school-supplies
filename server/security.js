@@ -1,1 +1,1 @@
-Collections.Categories.permit(['insert', 'update', 'remove']).apply();
+Collections.Categories.permit(['insert', 'update', 'remove']).ifHasRole('admin').apply();

@@ -1,7 +1,7 @@
 <template name="categories">
     <div class="container">
         <h2>Categories</h2>
-         {{> quickForm collection="Collections.Categories" id="createCategoryForm" type="method" meteormethod="categories/insertCategory" omitFields="createdAt"}}
+         {{> quickForm collection="Collections.Categories" id="createCategoryForm" type="insert" omitFields="createdAt"}}
     </div>
     {{#if Template.subscriptionsReady}}
         <ul class="collection">

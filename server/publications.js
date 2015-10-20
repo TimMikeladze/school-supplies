@@ -1,3 +1,3 @@
-Meteor.publish('categories', function (params) {
+Meteor.publish('categories', function () {
     return Collections.Categories.find({});
 });
