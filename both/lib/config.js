@@ -1,4 +1,5 @@
 Schemas = {};
+Collections = {};
 
 var isValidName = function(value) {
     return (value.length === 0 || !value.trim());
