@@ -3,8 +3,14 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-                <a class="waves-effect waves-light btn" href="/sign-up">Sign up</a>
-                <a class="waves-effect waves-light btn" href="/sign-in">Login</a>
+                {{#if currentUser }}
+                    <a href="#" class="nav-username">
+                        {{ currentUser.username }}
+                    </a>
+                {{else}}
+                    <a class="waves-effect waves-light btn" href="/sign-up">Sign up</a>
+                    <a class="waves-effect waves-light btn" href="/sign-in">Login</a>
+                {{/if}}
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
