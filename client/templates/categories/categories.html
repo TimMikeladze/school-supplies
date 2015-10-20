@@ -1,0 +1,15 @@
+<template name="categories">
+    <div class="container">
+        <h2>Categories</h2>
+         {{> quickForm collection="Collections.Categories" id="createCategoryForm" type="insert" omitFields="createdAt"}}
+    </div>
+    {{#if Template.subscriptionsReady}}
+        <ul class="collection">
+            {{#each categories}}
+                {{> categoryView}}
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>Loading...</p>
+    {{/if}}
+</template>

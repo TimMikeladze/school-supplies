@@ -1,0 +1,10 @@
+<template name="categoryEdit">
+    <h2>Edit</h2>
+    {{#if Template.subscriptionsReady}}
+        {{#with categoryDoc}}
+            {{> quickForm collection="Collections.Categories" doc=this id="createCategoryForm" type="update" omitFields="createdAt"}}
+        {{/with}}
+    {{else}}
+        <p>Loading...</p>
+    {{/if}}
+</template>
