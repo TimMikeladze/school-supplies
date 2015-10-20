@@ -1,0 +1,6 @@
+<template name="schoolprofile">
+	<div class="container"> 
+		<h2>School profile</h2>
+			{{> quickForm collection="Collections.Schools" id="createSchoolProfileForm" type="method" meteormethod="insertSchoolProfile" omitFields="createdBy, createdAt,donationDrive, searchableCategories"}}
+	</div>
+</template>	

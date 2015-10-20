@@ -122,5 +122,14 @@ adminSection.route('/categories/:categoryId', {
         BlazeLayout.render('layout', {
             main: 'categoryEdit'
         });
+   }
+});
+
+FlowRouter.route('/schoolProfile', {
+	name: 'schoolProfile',
+    action: function () {
+        BlazeLayout.render('layout', {
+        	main: 'schoolProfile',  
+        });
     }
 });
