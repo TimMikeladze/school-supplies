@@ -23,8 +23,7 @@ Template.categoryView.events({
 Template.categoryEdit.onCreated(function () {
     var self = this;
     self.autorun(function () {
-        var categoryId = FlowRouter.getParam('categoryId');
-        self.subscribe('categories', categoryId);
+        self.subscribe('categories');
     });
 });
 

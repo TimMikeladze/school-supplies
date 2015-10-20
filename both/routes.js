@@ -7,7 +7,7 @@ FlowRouter.route('/', {
 });
 
 //TODO(tim) Prevent access to these routes if user is already signed in
-FlowRouter.route('/categories', {
+FlowRouter.route('/admin/categories', {
     name: 'categories',
     action: function () {
         BlazeLayout.render('layout', {
@@ -32,7 +32,7 @@ FlowRouter.route('/sign-in', {
     }
 });
 
-FlowRouter.route('/categoryEdit/:categoryId', {
+FlowRouter.route('/admin/categoryEdit/:categoryId', {
     name: 'categoryEdit',
     action: function () {
         BlazeLayout.render('layout', {
