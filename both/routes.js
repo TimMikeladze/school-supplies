@@ -29,19 +29,8 @@ var adminSection = FlowRouter.group({
     triggersEnter: [function(context, redirect) {
         var params = context.params;
 
-        //TODO(lnw) add this form
-        var newRoute = '/403';
-
-        console.log(context);
-        console.log(params);
-
-        console.log(Meteor.userId());
-        console.log(Roles.userIsInRole(Meteor.userId(), Meteor.settings.adminRoles));
-
-
-        if (Roles.userIsInRole(Meteor.userId(), Meteor.settings.adminRoles)) {
-            redirect(newRoute, params);
-            //FlowRouter.go(FlowRouter.path(newRoute));
+        if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
+            redirect('/403', params);
         }
     }]
 });
