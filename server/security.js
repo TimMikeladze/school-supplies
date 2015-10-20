@@ -1,1 +1,1 @@
-Collections.Categories.permit(['insert', 'update', 'remove']).ifHasRole('admin').apply();
+Collections.Categories.permit(['insert', 'update', 'remove']).ifHasRole(Meteor.settings.adminRoles).apply();

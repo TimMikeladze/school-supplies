@@ -12,6 +12,14 @@ Template.categories.helpers({
     }
 });
 
+// CategoryView templates
+Template.categoryView.events({
+    'click .delete': function () {
+        Collections.Categories.remove(this._id);
+    }
+});
+
+
 // CategoryEdit templates
 Template.categoryEdit.onCreated(function () {
     var self = this;
