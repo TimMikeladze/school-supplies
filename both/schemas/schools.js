@@ -117,3 +117,6 @@ Schemas.SchoolSchema = new SimpleSchema({
         label: 'The requested categories'
     }
 });
+
+Collections.Schools = new Mongo.Collection('schools');
+Collections.Schools.attachSchema(Schemas.SchoolSchema);

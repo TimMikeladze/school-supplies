@@ -1,0 +1,1 @@
+Collections.Schools.permit(['insert', 'update', 'remove']).apply();

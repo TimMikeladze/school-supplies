@@ -21,3 +21,12 @@ FlowRouter.route('/sign-in', {
         });
     }
 });
+
+FlowRouter.route('/schoolprofile', {
+	name: 'schoolprofile',
+    action: function () {
+        BlazeLayout.render('layout', {
+        	main: 'schoolprofile',  
+        });
+    }
+});
