@@ -61,7 +61,21 @@ adminSection.route('/categoryEdit/:categoryId', {
     }
 });
 
-FlowRouter.route('/register-school', {
+var homeSection = FlowRouter.group({
+    prefix: '/home',
+    triggersEnter: [ensureSignedIn]
+});
+
+homeSection.route('/', {
+    name: 'home',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'home'
+        })
+    }
+});
+
+homeSection.route('/register-school', {
     action: function (params, queryParams) {
         BlazeLayout.render('layout', {
             main: 'registerSchool'
@@ -85,18 +99,4 @@ FlowRouter.route('/403', {
            main: '403'
        });
    }
-});
-
-var homeSection = FlowRouter.group({
-    prefix: '/home',
-    triggersEnter: [ensureSignedIn]
-});
-
-homeSection.route('/', {
-    name: 'home',
-    action: function () {
-        BlazeLayout.render('layout', {
-            main: 'home'
-        })
-    }
 });
