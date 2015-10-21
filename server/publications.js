@@ -1,5 +1,5 @@
 Meteor.publish('categories', function () {
-    if (Roles.userIsInRole(this.userId, ['admin'])) {
+    if (this.userId) {
         return Collections.Categories.find({});
     } else {
         this.stop();

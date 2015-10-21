@@ -23,6 +23,14 @@ var adminSection = signedIn.group({
 });
 
 FlowRouter.route('/', {
+    triggersEnter: [
+        function (context, redirect) {
+            var params = context.params;
+            if (Meteor.userId()) {
+                redirect('/home', params);
+            }
+        }
+    ],
     action: function (params, queryParams) {
         BlazeLayout.render('layout', {
             main: 'landing'
@@ -30,7 +38,6 @@ FlowRouter.route('/', {
     }
 });
 
-//TODO(tim) Prevent access to these routes if user is already signed in
 FlowRouter.route('/sign-up', {
     action: function (params, queryParams) {
         BlazeLayout.render('layout', {
@@ -82,6 +89,24 @@ signedIn.route('/register-school', {
     }
 });
 
+signedIn.route('/school/:schoolId/edit-donation-drive/:donationDriveId', {
+    name: 'donationDriveEdit',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'donationDriveEdit'
+        });
+    }
+});
+
+signedIn.route('/school/:schoolId/new-donation-drive', {
+    name: 'newDonationDrive',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'newDonationDrive'
+        });
+    }
+});
+
 adminSection.route('/categories', {
     name: 'categories',
     action: function () {
@@ -91,7 +116,7 @@ adminSection.route('/categories', {
     }
 });
 
-adminSection.route('/categoryEdit/:categoryId', {
+adminSection.route('/categories/:categoryId', {
     name: 'categoryEdit',
     action: function () {
         BlazeLayout.render('layout', {

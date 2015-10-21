@@ -4,7 +4,9 @@ Meteor.startup(function () {
         var id = Accounts.createUser({
             email: Meteor.settings.admin.email,
             password: Meteor.settings.admin.password,
-            username: Meteor.settings.admin.username
+            username: Meteor.settings.admin.username,
+            firstName: Meteor.settings.admin.firstName,
+            lastName: Meteor.settings.admin.lastName
         });
 
         Roles.addUsersToRoles(id, ['admin']);

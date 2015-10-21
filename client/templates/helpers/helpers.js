@@ -3,7 +3,14 @@ Template.registerHelper('fullName', function () {
     return profile.firstName + ' ' + profile.lastName;
 });
 
-
 Template.registerHelper('homeUrl', function () {
     return !Meteor.userId() ? '/' : '/home';
+});
+
+Template.registerHelper('donationDriveFormFields', function () {
+    return "title, description, startDate, endDate, wishlist, wishlist.$.categoryId, wishlist.$.isUnlimited, wishlist.$.requested, wishlist.$.notes";
+});
+
+Template.registerHelper('donationDriveFormOmitFields', function () {
+    return "id, createdBy, active, wishlist.$.received";
 });

@@ -27,13 +27,19 @@ Schemas.AddressSchema = new SimpleSchema({
 Schemas.WishlistCategorySchema = new SimpleSchema({
     categoryId: {
         type: String,
-        label: 'The id of the requested category'
+        label: 'The requested category',
+        autoform: {
+            options: function () {
+                return Collections.Categories.find({}, { sort: { title: 1 } }).map(function (category) {
+                    return { label: category.title, value: category._id };
+                });
+            }
+        }
     },
     requested: {
         type: Number,
         label: 'The total requested amount of the category',
-        min: 1,
-        optional: true
+        min: 1
     },
     isUnlimited: {
         type: Boolean,
@@ -43,7 +49,8 @@ Schemas.WishlistCategorySchema = new SimpleSchema({
     },
     received: {
         type: Number,
-        label: 'The total received amount of the category'
+        label: 'The total received amount of the category',
+        optional: true
     },
     notes: {
         type: String,
@@ -53,13 +60,53 @@ Schemas.WishlistCategorySchema = new SimpleSchema({
 });
 
 Schemas.DonationDriveSchema = new SimpleSchema({
+    id: {
+        type: String,
+        label: 'The id of the donation drive',
+        index: true,
+        unique: true,
+        optional: true
+        // TODO(lnw) use the autoValue
+        /*
+        autoValue: function () {
+            if (this.isInsert) {
+                return Random.id();
+            } else {
+                this.unset();
+                return;
+            }
+            //return Random.id();
+        }
+        */
+    },
+    createdBy: {
+        type: String,
+        label: 'User who created the donation drive',
+        autoValue: function () {
+            return Meteor.userId();
+        }
+    },
     startDate: {
         type: Date,
-        label: 'The start date of the donation drive'
+        label: 'The start date of the donation drive',
+        autoform: {
+            type: 'pickadate',
+            pickadateOptions: {
+                selectYears: true,
+                selectMonths: true
+            }
+        }
     },
     endDate: {
         type: Date,
-        label: 'The end date of the donation drive'
+        label: 'The end date of the donation drive',
+        autoform: {
+            type: 'pickadate',
+            pickadateOptions: {
+                selectYears: true,
+                selectMonths: true
+            }
+        }
     },
     title: {
         type: String,
@@ -71,11 +118,18 @@ Schemas.DonationDriveSchema = new SimpleSchema({
     },
     active: {
         type: Boolean,
-        label: 'Flag determining if the donation drive is active'
+        label: 'Flag determining if the donation drive is active',
+        defaultValue: false,
+        optional: true
     },
     wishlist: {
         type: [Schemas.WishlistCategorySchema],
-        label: 'The requested supplies of the donation drive'
+        label: 'Requested categories'
+    },
+    schoolId: {
+        type: String,
+        label: 'Temporary id value for the referencing school',
+        optional: true
     }
 });
 
@@ -92,7 +146,10 @@ Schemas.SchoolSchema = new SimpleSchema({
     createdBy: {
         type: String,
         label: 'The user id who created the school',
-        optional: true
+        optional: true,
+        autoValue: function () {
+            return Meteor.userId();
+        }
     },
     createdAt: {
         type: Date,
@@ -133,7 +190,8 @@ Schemas.SchoolSchema = new SimpleSchema({
     donationDrives: {
         type: [Schemas.DonationDriveSchema],
         label: 'The list of donation drives',
-        optional: true
+        optional: true,
+        defaultValue: []
     },
     schoolAdmins: {
         type: [String]
@@ -142,8 +200,6 @@ Schemas.SchoolSchema = new SimpleSchema({
 
 Collections.Schools = new Mongo.Collection('schools');
 Collections.Schools.attachSchema(Schemas.SchoolSchema);
-
-
 Collections.Schools.initEasySearch(['name'], {
     'limit': 20,
     'use': 'mongo-db'
