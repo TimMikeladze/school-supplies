@@ -33,8 +33,7 @@ Meteor.methods({
             throw new Meteor.Error('logged-out', 'The user must be logged in to register a school');
         }
 
-        debugger;
-        //check(doc, Schemas.DonationDriveSchema);
+        check(doc, Schemas.DonationDriveSchema);
         Collections.Schools.update(doc);
     },
     'deleteDonationDrive': function (schoolId, donationDriveId) {
