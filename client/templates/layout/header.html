@@ -7,9 +7,7 @@
                     <li><a href="#" class="nav-username">
                         {{ fullName }}
                     </a></li>
-                    {{#unless isInRole 'school-admin'}}
-                        <li><a href="{{pathFor '/home/register-school'}}">Register a school</a></li>
-                    {{/unless}}
+                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/home/register-school'}}">Register a school</a></li>
                 {{else}}
                     <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-up'}}">Sign up</a></li>
                     <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-in'}}">Login</a></li>
@@ -29,9 +27,7 @@
                     <li><a href="#" class="nav-username">
                         {{ fullName }}
                     </a></li>
-                    {{#unless isInRole 'school-admin'}}
-                        <li><a href="{{pathFor '/home/register-school'}}">Register a school</a></li>
-                    {{/unless}}
+                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/home/register-school'}}">Register a school</a></li>
                 {{else}}
                 <li><a href="{{pathFor '/sign-in'}}">Login</a></li>
                 <li><a href="{{pathFor '/sign-up'}}">Sign up</a></li>

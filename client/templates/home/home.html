@@ -1,3 +1,25 @@
 <template name="home">
-    <h2>You are home, brah.</h2>
+    <div class="container">
+    {{#if Template.subscriptionsReady}}
+        <h4>Your schools</h4>
+            <ul class="collapsible popout" data-collapsible="accordion">
+                {{#each schools}}
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">library_books</i>{{name}}</div>
+                        <div class="collapsible-body">
+                            <ul>
+                                {{#each donationDrives}}
+                                    <li>{{title}}</li>
+                                {{/each}}
+
+                                <li><a class="waves-effect waves-light btn" href="{{pathFor '/donation-drive'}}">Create a new drive</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+    {{else}}
+        <p>Loading...</p>
+    {{/if}}
+    </div>
 </template>
