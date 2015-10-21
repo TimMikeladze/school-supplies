@@ -9,11 +9,30 @@
             </li>
         {{/if}}
         <li class="divider"></li>
+        <li>
+            <a href="#" class="meteor-logout">Log out</a>
+        </li>
     </ul>
 
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="{{pathFor homeUrl}}" class="brand-logo">Logo</a>
+
+            <ul class="right hide-on-large-only">
+                {{#if currentUser}}
+                    <li>
+                        <a href="#" class="button-search"><i class="material-icons">search</i></a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="{{pathFor '/sign-up'}}">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor '/sign-in'}}">Log in</a>
+                    </li>
+
+                {{/if }}
+            </ul>
 
             <ul class="right hide-on-med-and-down">
                 {{#if currentUser }}
@@ -27,28 +46,36 @@
                         </a>
                     </li>
                 {{else}}
-                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-up'}}">Sign up</a></li>
-                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-in'}}">Login</a></li>
+                    <li>
+                        <a href="{{pathFor '/sign-up'}}">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor '/sign-in'}}">Log in</a>
+                    </li>
                 {{/if}}
             </ul>
 
-            <ul id="nav-mobile" class="side-nav">
-                {{#if isInRole 'admin'}}
-                    <li><a href="{{pathFor '/home/admin/categories'}}">Categories</a></li>
-                {{/if}}
-
-                {{#if currentUser}}
-                    <li><a href="#" class="nav-username">
-                        {{ fullName }}
-                    </a></li>
-                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/home/register-school'}}">Register a
-                        school</a></li>
-                {{else}}
-                    <li><a href="{{pathFor '/sign-in'}}">Login</a></li>
-                    <li><a href="{{pathFor '/sign-up'}}">Sign up</a></li>
-                {{/if}}
-            </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+            <ul class="side-nav" id="nav-mobile">
+                {{#if currentUser }}
+                    <li>
+                        <a href="{{pathFor '/home/register-school'}}">Register school</a>
+                        {{#if isInRole 'admin'}}
+                            <li>
+                                <a href="{{pathFor '/home/admin/categories'}}">Categories</a>
+                            </li>
+                        {{/if}}
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="{{pathFor '/sign-up'}}">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor '/sign-in'}}">Log in</a>
+                    </li>
+                {{/if}}
+            </ul>
 
         </div>
     </nav>
