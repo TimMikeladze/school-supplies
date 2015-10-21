@@ -16,7 +16,7 @@
 
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="{{pathFor homeUrl}}" class="brand-logo">Logo</a>
+            <a id="logo-container" href="{{pathFor homeUrl}}" class="brand-logo">{{ pageTitle }}</a>
 
             <ul class="right hide-on-large-only">
                 {{#if currentUser}}
@@ -59,13 +59,13 @@
 
             <ul class="side-nav" id="nav-mobile">
                 {{#if currentUser }}
-                    <li>
-                        <a href="{{pathFor '/home/register-school'}}">Register school</a>
-                        {{#if isInRole 'admin'}}
-                            <li>
-                                <a href="{{pathFor '/home/admin/categories'}}">Categories</a>
-                            </li>
-                        {{/if}}
+                <li>
+                    <a href="{{pathFor '/home/register-school'}}">Register school</a>
+                    {{#if isInRole 'admin'}}
+                        <li>
+                            <a href="{{pathFor '/home/admin/categories'}}">Categories</a>
+                        </li>
+                    {{/if}}
                     </li>
                 {{else}}
                     <li>

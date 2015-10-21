@@ -14,3 +14,7 @@ Template.registerHelper('donationDriveFormFields', function () {
 Template.registerHelper('donationDriveFormOmitFields', function () {
     return "id, createdBy, active, wishlist.$.received";
 });
+
+Template.registerHelper('pageTitle', function () {
+    return Session.get('pageTitle');
+});

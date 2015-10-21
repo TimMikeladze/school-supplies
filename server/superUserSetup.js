@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-    if (!Accounts.findUserByEmail(Meteor.settings.admin.email)) {
+    if (!Meteor.users.findOne()) {
         console.log("Creating super user account");
         var id = Accounts.createUser({
             email: Meteor.settings.admin.email,
