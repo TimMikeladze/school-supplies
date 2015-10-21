@@ -6,5 +6,12 @@ Meteor.methods({
         Roles.addUsersToRoles(Meteor.userId(), ['school-admin']);
         doc.schoolAdmins = [Meteor.userId()];
         Collections.Schools.insert(doc);
+    },
+    'insertDonationDrive': function (doc) {
+        console.log(doc);
+
+        var school = Collections.Schools.findOne({ createdBy: Meteor.userId() });
+        console.log(school);
+        school.donationDrives.push(doc);
     }
 });

@@ -30,7 +30,7 @@ Schemas.WishlistCategorySchema = new SimpleSchema({
         label: 'The requested category',
         autoform: {
             options: function () {
-                return Collections.Categories.find({}).map(function (category) {
+                return Collections.Categories.find({}, { sort: { title: 1 } }).map(function (category) {
                     return { label: category.title, value: category._id };
                 });
             }
@@ -64,7 +64,7 @@ Schemas.DonationDriveSchema = new SimpleSchema({
         type: String,
         label: 'User who created the donation drive',
         autoValue: function () {
-            return this.userId;
+            return Meteor.userId();
         }
     },
     startDate: {
@@ -122,7 +122,10 @@ Schemas.SchoolSchema = new SimpleSchema({
     createdBy: {
         type: String,
         label: 'The user id who created the school',
-        optional: true
+        optional: true,
+        autoValue: function () {
+            return Meteor.userId();
+        }
     },
     createdAt: {
         type: Date,
@@ -176,3 +179,4 @@ Collections.Schools.initEasySearch(['name'], {
     'limit': 20,
     'use': 'mongo-db'
 });
+

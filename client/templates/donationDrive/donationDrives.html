@@ -2,7 +2,7 @@
     <div class="container">
         <h2>Donation drives</h2>
         {{#if Template.subscriptionsReady}}
-            {{> quickForm collection="Collections.DonationDrives" id="createDonationDrive" type="insert" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
+            {{> quickForm schema="Schemas.DonationDriveSchema" id="createDonationDrive" type="method" meteormethod="insertDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
             <ul class="collection">
                 {{#each donationDrives}}
                     {{> donationDriveView}}
