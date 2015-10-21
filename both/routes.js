@@ -89,16 +89,7 @@ signedIn.route('/register-school', {
     }
 });
 
-signedIn.route('/donation-drives', {
-    name: 'donationDrives',
-    action: function () {
-        BlazeLayout.render('layout', {
-            main: 'donationDrives'
-        });
-    }
-});
-
-signedIn.route('/donation-drives/:donationDriveId', {
+signedIn.route('/school/:schoolId/edit-donation-drive/:donationDriveId', {
     name: 'donationDriveEdit',
     action: function () {
         BlazeLayout.render('layout', {

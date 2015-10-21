@@ -9,7 +9,11 @@
                         <div class="collapsible-body">
                             <ul>
                                 {{#each donationDrives}}
-                                    <li>{{title}}</li>
+                                    <li>{{title}}
+                                    {{#if canEditDrive}}
+                                        <a class="btn wave-effect waves-light teal" href="{{pathFor '/home/school/:schoolId/edit-donation-drive/:donationDriveId' schoolId=schoolId donationDriveId=id}}">Edit</a>
+                                    {{/if}}
+                                    </li>
                                 {{/each}}
 
                                 <li><a class="waves-effect waves-light btn newDonationDrive" href="{{pathFor '/home/school/:schoolId/new-donation-drive' schoolId=_id}}">Create a new drive</a></li>

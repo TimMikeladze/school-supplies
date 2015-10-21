@@ -12,6 +12,9 @@ Template.home.onCreated(function () {
 Template.home.helpers({
     schools: function () {
         return schoolsCursor();
+    },
+    canEditDrive: function () {
+        return this.startDate.getTime() > new Date().getTime();
     }
 });
 

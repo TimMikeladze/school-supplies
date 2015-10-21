@@ -60,6 +60,25 @@ Schemas.WishlistCategorySchema = new SimpleSchema({
 });
 
 Schemas.DonationDriveSchema = new SimpleSchema({
+    id: {
+        type: String,
+        label: 'The id of the donation drive',
+        index: true,
+        unique: true,
+        optional: true
+        // TODO(lnw) use the autoValue
+        /*
+        autoValue: function () {
+            if (this.isInsert) {
+                return Random.id();
+            } else {
+                this.unset();
+                return;
+            }
+            //return Random.id();
+        }
+        */
+    },
     createdBy: {
         type: String,
         label: 'User who created the donation drive',
@@ -106,6 +125,11 @@ Schemas.DonationDriveSchema = new SimpleSchema({
     wishlist: {
         type: [Schemas.WishlistCategorySchema],
         label: 'Requested categories'
+    },
+    schoolId: {
+        type: String,
+        label: 'Temporary id value for the referencing school',
+        optional: true
     }
 });
 
@@ -166,7 +190,8 @@ Schemas.SchoolSchema = new SimpleSchema({
     donationDrives: {
         type: [Schemas.DonationDriveSchema],
         label: 'The list of donation drives',
-        optional: true
+        optional: true,
+        defaultValue: []
     },
     schoolAdmins: {
         type: [String]
@@ -179,4 +204,3 @@ Collections.Schools.initEasySearch(['name'], {
     'limit': 20,
     'use': 'mongo-db'
 });
-

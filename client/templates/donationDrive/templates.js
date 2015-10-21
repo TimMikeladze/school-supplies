@@ -1,59 +1,47 @@
-Template.donationDrives.onCreated(function () {
-    var self = this;
-    self.autorun(function () {
-        self.subscribe('categories');
-        self.subscribe('donationDrives');
-    });
-});
-
-Template.donationDrives.helpers({
-    donationDrives: function () {
-       return Collections.DonationDrives.find({}, { sort: { startDate: -1 } });
-    }
-});
-
-Template.donationDriveView.helpers({
-    canEditDrive: function () {
-        return this.startDate.getTime() > new Date().getTime();
-    }
-});
-
-Template.donationDriveView.events({
-    'click .delete': function () {
-        Collections.DonationDrives.remove(this._id);
-    }
-});
-
 Template.donationDriveEdit.onCreated(function () {
    var self = this;
     self.autorun(function () {
-        self.subscribe('donationDrives');
         self.subscribe('categories');
+        self.subscribe('schools');
     });
 });
 
 Template.donationDriveEdit.helpers({
     donationDoc: function () {
         var donationDriveId = FlowRouter.getParam('donationDriveId');
-        return Collections.DonationDrives.findOne({ _id: donationDriveId });
+        var schoolId = FlowRouter.getParam('schoolId');
+        var school = Collections.Schools.findOne({ _id: schoolId });
+
+        for (var drive in school.donationDrives) {
+            if (school.donationDrives[drive].id == donationDriveId) {
+                var locatedDrive = school.donationDrives[drive];
+                break;
+            }
+        }
+
+        return locatedDrive;
     }
 });
+
+Template.donationDriveEdit.events({
+    'click .delete': function () {
+        Meteor.call('deleteDonationDrive', this.schoolId, this.id);
+    }
+});
+
 
 Template.newDonationDrive.onCreated(function () {
     var self = this;
     self.autorun(function () {
         self.subscribe('categories');
+        self.subscribe('schools');
     });
 });
 
-
 AutoForm.hooks({
-    newDonationDrive:  {
+    newDonationDriveForm:  {
         formToDoc: function (doc) {
-            var schoolId = FlowRouter.getParam('schoolId');
-            console.log(schoolId);
-            doc._id = schoolId;
-
+            doc.schoolId = FlowRouter.getParam('schoolId');
             return doc;
         }
     }

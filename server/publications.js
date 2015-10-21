@@ -15,12 +15,3 @@ Meteor.publish('schools', function () {
         return;
     }
 });
-
-Meteor.publish('donationDrives', function () {
-   if (this.userId) {
-       return Collections.DonationDrives.find({ createdBy: this.userId });
-   }  else {
-       this.stop();
-       return;
-   }
-});
