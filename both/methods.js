@@ -30,7 +30,7 @@ Meteor.methods({
     },
     'updateDonationDrive': function (doc) {
         if (!Meteor.userId()) {
-            throw new Meteor.Error('logged-out', 'The user must be logged in to register a school');
+            throw new Meteor.Error('logged-out', 'The user must be logged in to edit the donation drive.');
         }
 
         check(doc, Schemas.DonationDriveSchema);
@@ -38,7 +38,7 @@ Meteor.methods({
     },
     'deleteDonationDrive': function (schoolId, donationDriveId) {
         if (!Meteor.userId()) {
-            throw new Meteor.Error('logged-out', 'The user must be logged in to register a school');
+            throw new Meteor.Error('logged-out', 'The user must be logged in to delete the donation drive.');
         }
 
         Collections.Schools.update({ _id: schoolId }, { $pull: { donationDrives: { id: donationDriveId } } });

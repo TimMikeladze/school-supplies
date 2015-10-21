@@ -30,7 +30,6 @@ Template.donationDriveEdit.events({
     }
 });
 
-
 Template.newDonationDrive.onCreated(function () {
     var self = this;
     self.autorun(function () {
