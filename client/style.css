@@ -11,6 +11,24 @@ p {
     line-height: 2rem;
 }
 
+h1 {
+    text-shadow: 2px 2px #000000;
+}
+
+h5.header {
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
+
+a.footer {
+    color: #FFFFFF;
+}
+
+img.logo {
+    max-width: 10%;
+    height: auto;
+}
+
 .button-collapse {
     color: #26a69a;
 }
