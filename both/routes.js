@@ -107,6 +107,15 @@ signedIn.route('/donation-drives/:donationDriveId', {
     }
 });
 
+signedIn.route('/school/:schoolId/new-donation-drive', {
+    name: 'newDonationDrive',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'newDonationDrive'
+        });
+    }
+});
+
 adminSection.route('/categories', {
     name: 'categories',
     action: function () {

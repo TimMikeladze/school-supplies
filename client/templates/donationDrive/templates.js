@@ -38,3 +38,23 @@ Template.donationDriveEdit.helpers({
         return Collections.DonationDrives.findOne({ _id: donationDriveId });
     }
 });
+
+Template.newDonationDrive.onCreated(function () {
+    var self = this;
+    self.autorun(function () {
+        self.subscribe('categories');
+    });
+});
+
+
+AutoForm.hooks({
+    newDonationDrive:  {
+        formToDoc: function (doc) {
+            var schoolId = FlowRouter.getParam('schoolId');
+            console.log(schoolId);
+            doc._id = schoolId;
+
+            return doc;
+        }
+    }
+});

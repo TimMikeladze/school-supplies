@@ -8,10 +8,14 @@ Meteor.methods({
         Collections.Schools.insert(doc);
     },
     'insertDonationDrive': function (doc) {
-        console.log(doc);
-
-        var school = Collections.Schools.findOne({ createdBy: Meteor.userId() });
+        if (!Meteor.userId()) {
+            throw new Meteor.Error('logged-out', 'The user must be logged in to register a school');
+        }
+        var currentSchoolId = doc._id;
+        var school = Collections.Schools.findOne({ _id: currentSchoolId });
         console.log(school);
+
+        if (!)
         school.donationDrives.push(doc);
     }
 });

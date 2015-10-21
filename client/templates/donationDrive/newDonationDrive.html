@@ -1,0 +1,6 @@
+<template name="newDonationDrive">
+    <div class="container">
+        <h2>Start a new donation drive</h2>
+        {{> quickForm schema="Schemas.DonationDriveSchema" id="createDonationDrive" type="method" meteormethod="insertDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
+    </div>
+</template>
