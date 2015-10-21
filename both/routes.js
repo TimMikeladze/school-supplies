@@ -6,6 +6,22 @@ var ensureSignedIn = function (context, redirect) {
     }
 };
 
+var signedIn = FlowRouter.group({
+    prefix: '/home',
+    triggersEnter: [ensureSignedIn]
+});
+
+var adminSection = signedIn.group({
+    prefix: '/admin',
+    triggersEnter: [function(context, redirect) {
+        var params = context.params;
+
+        if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
+            redirect('/403', params);
+        }
+    }]
+});
+
 FlowRouter.route('/', {
     action: function (params, queryParams) {
         BlazeLayout.render('layout', {
@@ -31,16 +47,39 @@ FlowRouter.route('/sign-in', {
     }
 });
 
-var adminSection = FlowRouter.group({
-    prefix: '/admin',
-    triggersEnter: [ensureSignedIn,
-        function(context, redirect) {
-            var params = context.params;
+FlowRouter.notFound = {
+    name: '404',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: '404'
+        });
+    }
+};
 
-            if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
-                redirect('/403', params);
-            }
-    }]
+FlowRouter.route('/403', {
+    name: '403',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: '403'
+        });
+    }
+});
+
+signedIn.route('/', {
+    name: 'home',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'home'
+        })
+    }
+});
+
+signedIn.route('/register-school', {
+    action: function (params, queryParams) {
+        BlazeLayout.render('layout', {
+            main: 'registerSchool'
+        });
+    }
 });
 
 adminSection.route('/categories', {
@@ -59,44 +98,4 @@ adminSection.route('/categoryEdit/:categoryId', {
             main: 'categoryEdit'
         });
     }
-});
-
-var homeSection = FlowRouter.group({
-    prefix: '/home',
-    triggersEnter: [ensureSignedIn]
-});
-
-homeSection.route('/', {
-    name: 'home',
-    action: function () {
-        BlazeLayout.render('layout', {
-            main: 'home'
-        })
-    }
-});
-
-homeSection.route('/register-school', {
-    action: function (params, queryParams) {
-        BlazeLayout.render('layout', {
-            main: 'registerSchool'
-        });
-    }
-});
-
-FlowRouter.notFound = {
-    name: '404',
-    action: function () {
-        BlazeLayout.render('layout', {
-            main: '404'
-        });
-    }
-};
-
-FlowRouter.route('/403', {
-    name: '403',
-    action: function () {
-       BlazeLayout.render('layout', {
-           main: '403'
-       });
-   }
 });
