@@ -26,6 +26,7 @@ Template.donationDriveEdit.helpers({
 Template.donationDriveEdit.events({
     'click .delete': function () {
         Meteor.call('deleteDonationDrive', this.schoolId, this.id);
+        FlowRouter.go('/home');
     }
 });
 
