@@ -1,32 +1,37 @@
 <template name="header">
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="{{pathFor '/'}}" class="brand-logo">Logo</a>
+            <a id="logo-container" href="{{pathFor homeUrl}}" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
                 {{#if currentUser }}
                     <li><a href="#" class="nav-username">
                         {{ fullName }}
                     </a></li>
+                    {{#unless isInRole 'school-admin'}}
+                        <li><a href="{{pathFor '/home/register-school'}}">Register a school</a></li>
+                    {{/unless}}
                 {{else}}
                     <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-up'}}">Sign up</a></li>
                     <li><a class="waves-effect waves-light btn" href="{{pathFor '/sign-in'}}">Login</a></li>
                 {{/if}}
 
                 {{#if isInRole 'admin'}}
-                    <li><a href="{{pathFor '/admin/categories'}}">Categories</a></li>
+                    <li><a href="{{pathFor '/home/admin/categories'}}">Categories</a></li>
                 {{/if}}
             </ul>
 
             <ul id="nav-mobile" class="side-nav">
                 {{#if isInRole 'admin'}}
-                    <li><a href="{{pathFor '/admin/categories'}}">Categories</a></li>
-
+                    <li><a href="{{pathFor '/home/admin/categories'}}">Categories</a></li>
                 {{/if}}}
 
                 {{#if currentUser}}
                     <li><a href="#" class="nav-username">
                         {{ fullName }}
                     </a></li>
+                    {{#unless isInRole 'school-admin'}}
+                        <li><a href="{{pathFor '/home/register-school'}}">Register a school</a></li>
+                    {{/unless}}
                 {{else}}
                 <li><a href="{{pathFor '/sign-in'}}">Login</a></li>
                 <li><a href="{{pathFor '/sign-up'}}">Sign up</a></li>
