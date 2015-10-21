@@ -5,7 +5,7 @@
         {{#each this.links}}
             <a href="/{{this}}" target="_blank">{{this}}</a>
         {{/each}}
-        <a class="s8 col btn wave-effect waves-light teal" href="{{pathFor '/home/admin/categoryEdit/:categoryId' categoryId=_id}}">Edit</a>
+        <a class="s8 col btn wave-effect waves-light teal" href="{{pathFor '/home/admin/categories/:categoryId' categoryId=_id}}">Edit</a>
         <button class="delete s8 col btn wave-effect waves-light teal">Delete</button>
     </li>
 </template>

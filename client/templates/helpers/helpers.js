@@ -6,3 +6,11 @@ Template.registerHelper('fullName', function () {
 Template.registerHelper('homeUrl', function () {
     return !Meteor.userId() ? '/' : '/home';
 });
+
+Template.registerHelper('donationDriveFormFields', function () {
+    return "title, description, startDate, endDate, wishlist, wishlist.$.categoryId, wishlist.$.isUnlimited, wishlist.$.requested, wishlist.$.notes";
+});
+
+Template.registerHelper('donationDriveFormOmitFields', function () {
+    return "createdBy, active, wishlist.$.received";
+});

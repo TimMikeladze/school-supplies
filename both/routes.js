@@ -23,6 +23,14 @@ var adminSection = signedIn.group({
 });
 
 FlowRouter.route('/', {
+    triggersEnter: [
+        function (context, redirect) {
+            var params = context.params;
+            if (Meteor.userId()) {
+                redirect('/home', params);
+            }
+        }
+    ],
     action: function (params, queryParams) {
         BlazeLayout.render('layout', {
             main: 'landing'
@@ -81,7 +89,7 @@ signedIn.route('/register-school', {
     }
 });
 
-signedIn.route('/donationDrives', {
+signedIn.route('/donation-drives', {
     name: 'donationDrives',
     action: function () {
         BlazeLayout.render('layout', {
@@ -90,7 +98,7 @@ signedIn.route('/donationDrives', {
     }
 });
 
-signedIn.route('/donationDriveEdit/:donationDriveId', {
+signedIn.route('/donation-drives/:donationDriveId', {
     name: 'donationDriveEdit',
     action: function () {
         BlazeLayout.render('layout', {
@@ -108,7 +116,7 @@ adminSection.route('/categories', {
     }
 });
 
-adminSection.route('/categoryEdit/:categoryId', {
+adminSection.route('/categories/:categoryId', {
     name: 'categoryEdit',
     action: function () {
         BlazeLayout.render('layout', {
