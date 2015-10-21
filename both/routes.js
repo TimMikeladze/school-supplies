@@ -125,7 +125,7 @@ adminSection.route('/categories/:categoryId', {
    }
 });
 
-FlowRouter.route('/schoolProfile', {
+FlowRouter.route('/school-profile/:schoolId', {
 	name: 'schoolProfile',
     action: function () {
         BlazeLayout.render('layout', {
