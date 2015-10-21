@@ -1,0 +1,30 @@
+<template name="searchBar">
+    <div class="row black-text" id="search-container" style="display: block;">
+        <div class="container">
+            <form action="search" method="get">
+                <div class="search-input">
+                    {{> esInput index="schools" placeholder="Search..." }}
+                </div>
+
+                <ul class="collection">
+                    {{#ifEsIsSearching index="schools"}}
+                        <li class="collection-item">Loading...</li>
+                    {{else}}
+                        <div class="results-wrapper">
+
+                            {{#esEach index="schools"}}
+                                {{> searchResult }}
+                            {{/esEach}}
+                        </div>
+
+                        {{> esLoadMoreButton index="schools"}}
+                    {{/ifEsIsSearching}}
+
+                    {{#ifEsHasNoResults index="schools"}}
+                        <li class="no-results collection-item">No schools found!</li>
+                    {{/ifEsHasNoResults}}
+                </ul>
+            </form>
+        </div>
+    </div>
+</template>
