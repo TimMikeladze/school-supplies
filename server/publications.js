@@ -6,3 +6,13 @@ Meteor.publish('categories', function () {
         return;
     }
 });
+
+Meteor.publish('schools', function () {
+    if (Roles.userIsInRole(this.userId, ['school-admin'])) {
+        console.log(this.userId);
+        return Collections.Schools.find({ schoolAdmins: { $in: [this.userId] } });
+    } else {
+        this.stop();
+        return;
+    }
+});
