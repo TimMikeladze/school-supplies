@@ -77,3 +77,15 @@ footer.page-footer {
     margin-top: 35px;
     margin-bottom: 35px;
 }
+
+#nav-search-form {
+    margin-left: 100px;
+}
+
+#nav-search-form i {
+    color: #444;
+}
+
+#nav-search-form input {
+    width: 450px;
+}
