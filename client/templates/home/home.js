@@ -5,7 +5,8 @@ function schoolsCursor() {
 Template.home.onCreated(function () {
     var self = this;
     self.autorun(function () {
-        self.subscribe('schools');
+        self.subscribe('mySchools');
+        self.subscribe('donations');
     });
 });
 

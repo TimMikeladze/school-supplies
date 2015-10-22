@@ -49,3 +49,6 @@ Schemas.DonationSchema = new SimpleSchema({
     // donor notes
     // shipping details
 });
+
+
+Collections.Donations = new Mongo.Collection('donations');
