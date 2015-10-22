@@ -1,27 +1,62 @@
 <template name="home">
     <div class="container">
+    <h4>My recent donations</h4>
     {{#if Template.subscriptionsReady}}
-        <h4>Your schools</h4>
-            <ul class="collapsible popout" data-collapsible="accordion">
-                {{#each schools}}
+        {{#if userHasNoDonations}}
+            <h5>You have not donated anything...</h5>
+        {{/if}}
+        {{#each drivesDonatedTo}}
+        <div class="card small">
+            <div class="card teal waves-effect waves-block waves-light">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{donationDriveName}}<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{donationDriveName}}<i class="material-icons right">close</i></span>
+                <ul>
+                    {{#each donatedCategories}}
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">library_books</i>{{name}}</div>
-                        <div class="collapsible-body">
-                            <ul>
-                                {{#each donationDrives}}
-                                    <li>{{title}}
-                                    {{#if canEditDrive}}
-                                        <a class="btn wave-effect waves-light teal" href="{{pathFor '/home/school/:schoolId/edit-donation-drive/:donationDriveId' schoolId=schoolId donationDriveId=id}}">Edit</a>
-                                    {{/if}}
-                                    </li>
-                                {{/each}}
-
-                                <li><a class="waves-effect waves-light btn" href="{{pathFor '/home/school/:schoolId/new-donation-drive' schoolId=_id}}">Create a new drive</a></li>
-                            </ul>
-                        </div>
+                        <h5>{{categoryId}}</h5>
+                        <h5>{{quantity}}</h5>
                     </li>
-                {{/each}}
-            </ul>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+        {{#if isInRole 'school-admin'}}
+                <h4>My schools</h4>
+                <ul class="collapsible popout" data-collapsible="accordion">
+                    {{#each schools}}
+                        <li>
+                            <div class="collapsible-header">
+                                <span>
+                                    <i class="left material-icons">library_books</i>
+                                    <h6 class="left">{{name}}</h6>
+                                    <h6 class="right">{{address.city}}, {{address.state}}</h6>
+                                </span>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {{#each donationDrives}}
+                                        <li><span>
+                                            <i class="left material-icons">description</i>
+                                            <h6>{{title}}</h6>
+                                            <h7>{{description}}</h7>
+                                        {{#if canEditDrive}}
+                                            <a class="right btn wave-effect waves-light teal" href="{{pathFor '/home/school/:schoolId/edit-donation-drive/:donationDriveId' schoolId=schoolId donationDriveId=id}}">Edit</a>
+                                        {{/if}}
+                                        </span></li>
+                                    {{/each}}
+
+                                    <li><a class="waves-effect waves-light btn" href="{{pathFor '/home/school/:schoolId/new-donation-drive' schoolId=_id}}">Create a new drive</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+        {{/if}}
     {{else}}
         <p>Loading...</p>
     {{/if}}

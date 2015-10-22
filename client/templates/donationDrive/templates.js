@@ -2,7 +2,7 @@ Template.donationDriveEdit.onCreated(function () {
    var self = this;
     self.autorun(function () {
         self.subscribe('categories');
-        self.subscribe('schools');
+        self.subscribe('mySchools');
     });
 });
 
@@ -34,7 +34,7 @@ Template.newDonationDrive.onCreated(function () {
     var self = this;
     self.autorun(function () {
         self.subscribe('categories');
-        self.subscribe('schools');
+        self.subscribe('mySchools');
     });
 });
 

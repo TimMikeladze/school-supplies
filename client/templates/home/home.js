@@ -2,10 +2,15 @@ function schoolsCursor() {
     return Collections.Schools.find({});
 }
 
+function donationsCursor() {
+    return Collections.Donations.find({});
+}
+
 Template.home.onCreated(function () {
     var self = this;
     self.autorun(function () {
-        self.subscribe('schools');
+        self.subscribe('mySchools');
+        self.subscribe('donations');
     });
 });
 
@@ -15,12 +20,28 @@ Template.home.helpers({
     },
     canEditDrive: function () {
         return this.startDate.getTime() > new Date().getTime();
+    },
+    drivesDonatedTo: function () {
+        return donationsCursor();
+    },
+    donationDriveName: function () {
+        var school = Collections.Schools.findOne({ _id: this.schoolId });
+
+        for (var i in school.donationDrives) {
+            if (school.donationDrives[i].id == this.donationDriveId) {
+                return school.donationDrives[i].title;
+            }
+        }
+    },
+    userHasNoDonations: function () {
+        return Collections.Donations.find({}).count() == 0;
     }
 });
 
 Template.home.onRendered(function () {
     this.autorun(function () {
         var schoolCount = schoolsCursor().count();
+        var donationsCount = donationsCursor().count();
 
         Tracker.afterFlush(function () {
             this.$('.collapsible').collapsible({
