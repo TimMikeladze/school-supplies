@@ -1,7 +1,7 @@
 Schemas.DonatedCategorySchema = new SimpleSchema({
-    categoryId: {
+    categoryName: {
         type: String,
-        label: 'The id of the donated category'
+        label: 'The name of the donated category'
     },
     quantity: {
         type: Number,
@@ -29,7 +29,8 @@ Schemas.DonationSchema = new SimpleSchema({
     anonymous: {
         type: Boolean,
         defaultValue: false,
-        label: 'Flag determining if the donor is anonymous'
+        label: 'Flag determining if the donor is anonymous',
+        optional: true
     },
     donationDriveId: {
         type: String,
@@ -38,11 +39,13 @@ Schemas.DonationSchema = new SimpleSchema({
     status: {
         type: String,
         label: 'The status of the donation',
-        allowedValues: ['Pending', 'Received', 'Not Received']
+        allowedValues: ['Pending', 'Received', 'Not Received'],
+        defaultValue: 'Pending'
     },
     donatedCategories: {
         type: [Schemas.DonatedCategorySchema],
-        label: 'The list of donated categories'
+        label: 'The list of donated categories',
+        defaultValue: []
     }
     // TODO(lnw) what was the purpose of these three?
     // donor address

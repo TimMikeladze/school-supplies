@@ -18,6 +18,7 @@ Meteor.publish('mySchools', function () {
 
 Meteor.publish('donations', function () {
     if (this.userId) {
+        console.log('here');
         return Collections.Donations.find({ donorId: this.userId });
     } else {
         this.stop();
