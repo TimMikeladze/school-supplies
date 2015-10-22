@@ -1,0 +1,107 @@
+<template name="donate">
+    <div class="container">
+        {{#if isStep 'searchOrMatch' }}
+            <div class="row">
+                <div class="col s12 center">Help text about what is happening goes here</div>
+                <div class="row">
+                    <div class="col s12 center">
+                        <a href="#" id="match-button" class="btn waves-effect waves-light teal lighten-1">Match me with
+                            a
+                            school</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <h5 class="center">
+                        or
+                    </h5>
+                </div>
+
+                <div class="row donate-school-search">
+                    <div class="col s12">
+                        <div class="center">
+                            {{> esInput index="schools" placeholder="Search schools..." }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row donate-school-search">
+                    <div class="col s12">
+                        <ul class="collection">
+                            {{#ifEsIsSearching index="schools"}}
+                                <li class="collection-item">Loading...</li>
+                            {{else}}
+                                <div class="results-wrapper">
+                                    {{#esEach index="schools"}}
+                                        <li class="collection-item">
+                                            <div>
+                                                {{ name }} - {{ district }}
+                                                <a href="#" data-school-id="{{_id}}"
+                                                   class="secondary-content donate-select-school">
+                                                    <i class="material-icons">send</i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    {{/esEach}}
+                                </div>
+
+                                {{> esLoadMoreButton index="schools"}}
+                            {{/ifEsIsSearching}}
+
+                            {{#ifEsHasNoResults index="schools"}}
+                                <li class="no-results collection-item">No schools found!</li>
+                            {{/ifEsHasNoResults}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isStep 'chooseDrive' }}
+            <div class="row">
+                <div class="col s12 center">Help text about what is happening goes here</div>
+                <div class="col offset-s3 s6">
+                    <div class="card teal lighten-1">
+                        {{#each school.donationDrives }}
+                            <div class="card-content white-text">
+                                <span class="card-title">{{ title }}</span>
+
+                                <p>
+                                    {{ description }}
+                                </p>
+                            </div>
+                            <div class="card-action right">
+                                <a href="#" class="donate-select-drive" data-school-drive-id="{{ id }}">Choose this
+                                    donation drive</a>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isStep 'chooseCategories' }}
+            <div class="row">
+                <div class="col s12 center">Help text about what is happening goes here</div>
+            </div>
+            {{#each donationDrive.wishlist }}
+                {{#with categoryById categoryId }}
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6 offset-s3">
+                                    <input id="{{ categoryId }}" min="0" type="number" class="validate">
+                                    <label for="{{ categoryId }}">{{ title }}</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {{/with}}
+            {{/each}}
+            <div class="row">
+                <div class="col s6 offset-s3">
+                    <a id="donate-submit-button" class="right btn waves-effect waves-light teal lighten-1">Submit</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

@@ -13,7 +13,7 @@ var signedIn = FlowRouter.group({
 
 var adminSection = signedIn.group({
     prefix: '/admin',
-    triggersEnter: [function(context, redirect) {
+    triggersEnter: [function (context, redirect) {
         var params = context.params;
 
         if (!Roles.userIsInRole(Meteor.userId(), 'admin')) {
@@ -35,6 +35,16 @@ FlowRouter.route('/', {
         Session.set('pageTitle', 'Supply Net');
         BlazeLayout.render('layout', {
             main: 'landing'
+        });
+    }
+});
+
+FlowRouter.route('/donate', {
+    name: 'donate',
+    action: function (params, queryParams) {
+        Session.set('pageTitle', 'Donate');
+        BlazeLayout.render('layout', {
+           main: 'donate'
         });
     }
 });

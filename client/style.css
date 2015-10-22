@@ -85,3 +85,8 @@ footer.page-footer {
 .search-result {
     cursor: pointer;
 }
+
+.donate-school-search {
+    width: 500px !important;
+    margin-left: 250px !important;
+}
