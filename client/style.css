@@ -90,3 +90,13 @@ footer.page-footer {
     width: 500px !important;
     margin-left: 250px !important;
 }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}

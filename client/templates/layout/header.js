@@ -15,11 +15,7 @@ Template.header.onRendered(function () {
     $(".button-collapse").sideNav();
 });
 
-Template.header.helpers({
-    isSearchBarActive: function () {
-        return Session.get('isSearchBarActive');
-    }
-});
+
 
 Template.header.events({
     'click .button-search': function (event, template) {
