@@ -11,6 +11,7 @@ Template.home.onCreated(function () {
     self.autorun(function () {
         self.subscribe('mySchools');
         self.subscribe('donations');
+        self.subscribe('categories');
     });
 });
 
@@ -35,6 +36,9 @@ Template.home.helpers({
     },
     userHasNoDonations: function () {
         return Collections.Donations.find({}).count() == 0;
+    },
+    donatedCategoryName: function () {
+        return Collections.Categories.findOne({ _id: this.categoryId }).title;
     }
 });
 

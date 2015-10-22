@@ -45,6 +45,11 @@ AutoForm.hooks({
                 doc.schoolId = FlowRouter.getParam('schoolId');
                 return doc;
             }
+        },
+        after: {
+            'method': function () {
+                FlowRouter.go('/home');
+            }
         }
     },
     donationDriveEditForm: {
@@ -53,6 +58,11 @@ AutoForm.hooks({
                 doc.$set.id = FlowRouter.getParam('donationDriveId');
                 doc.$set.schoolId = FlowRouter.getParam('schoolId');
                 return doc;
+            }
+        },
+        after: {
+            'method-update': function () {
+                FlowRouter.go('/home');
             }
         }
     }

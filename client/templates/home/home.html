@@ -17,7 +17,7 @@
                 <ul>
                     {{#each donatedCategories}}
                     <li>
-                        <h5>{{categoryId}}</h5>
+                        <h5>{{donatedCategoryName}}</h5>
                         <h5>{{quantity}}</h5>
                     </li>
                     {{/each}}
@@ -33,7 +33,7 @@
                             <div class="collapsible-header">
                                 <span>
                                     <i class="left material-icons">library_books</i>
-                                    <h6 class="left">{{name}}</h6>
+                                    <a class="left" href="{{pathFor '/home/school/:schoolId' schoolId=_id}}">{{name}}</a>
                                     <h6 class="right">{{address.city}}, {{address.state}}</h6>
                                 </span>
                             </div>

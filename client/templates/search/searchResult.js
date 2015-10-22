@@ -4,7 +4,7 @@ Template.searchResult.helpers({
 
 Template.searchResult.events({
     'click .search-result': function(event, template) {
-        //TODO(tim) Go to school profile
+        Session.set('isSearchBarActive', false);
     }
 });
 
