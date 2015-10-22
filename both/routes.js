@@ -117,6 +117,15 @@ signedIn.route('/school/:schoolId/edit-donation-drive/:donationDriveId', {
     }
 });
 
+signedIn.route('/school/:schoolId/edit-school', {
+    name: 'editSchool',
+    action: function () {
+        BlazeLayout.render('layout', {
+            main: 'editSchool'
+        });
+    }
+});
+
 signedIn.route('/school/:schoolId/new-donation-drive', {
     name: 'newDonationDrive',
     action: function () {

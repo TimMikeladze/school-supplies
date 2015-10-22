@@ -1,0 +1,13 @@
+<template name="editSchool">
+    <div class="container">
+        {{#if Template.subscriptionsReady}}
+            {{#with schoolDoc}}
+                <h2>Edit {{name}}</h2>
+                <h7>Here you can modify your school. Any mistakes you may have made before can be corrected here before you set up donation drives.</h7>
+                {{> quickForm collection="Collections.Schools" doc=schoolDoc id="schoolEditForm" type="update"}}
+            {{/with}}
+        {{else}}
+            <p>Loading...</p>
+        {{/if}}
+    </div>
+</template>

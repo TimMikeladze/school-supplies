@@ -34,6 +34,7 @@
                                 <span>
                                     <i class="left material-icons">library_books</i>
                                     <a class="left" href="{{pathFor '/home/school/:schoolId' schoolId=_id}}">{{name}}</a>
+                                    <a id="editSchoolBtn" class="right btn" href="{{pathFor '/home/school/:schoolId/edit-school' schoolId=_id}}">Edit</a>
                                     <h6 class="right">{{address.city}}, {{address.state}}</h6>
                                 </span>
                             </div>

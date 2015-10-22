@@ -90,3 +90,7 @@ footer.page-footer {
     width: 500px !important;
     margin-left: 250px !important;
 }
+
+#editSchoolBtn {
+    margin-left: 10px;
+}
