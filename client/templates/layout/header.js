@@ -5,7 +5,6 @@ Template.header.onRendered(function () {
                 $(".dropdown-button").dropdown({
                     belowOrigin: true
                 });
-
             });
         }
     });
@@ -25,6 +24,7 @@ Template.header.events({
     },
     'click .meteor-logout': function (event, template) {
         Meteor.logout(function () {
+            Session.set('isSearchBarActive', false);
             FlowRouter.go('/');
         });
     }
