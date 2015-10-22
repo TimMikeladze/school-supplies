@@ -24,7 +24,8 @@ Template.header.events({
         Session.set('isSearchBarActive', !Session.get('isSearchBarActive'));
     },
     'click .meteor-logout': function (event, template) {
-        Meteor.logout();
-        FlowRouter.go('/');
+        Meteor.logout(function () {
+            FlowRouter.go('/');
+        });
     }
 });
