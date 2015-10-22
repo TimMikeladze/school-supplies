@@ -100,6 +100,7 @@ signedIn.route('/register-school', {
 signedIn.route('/school/:schoolId/edit-donation-drive/:donationDriveId', {
     name: 'donationDriveEdit',
     action: function () {
+        Session.set('pageTitle', 'Edit donation drive');
         BlazeLayout.render('layout', {
             main: 'donationDriveEdit'
         });
@@ -109,8 +110,19 @@ signedIn.route('/school/:schoolId/edit-donation-drive/:donationDriveId', {
 signedIn.route('/school/:schoolId/new-donation-drive', {
     name: 'newDonationDrive',
     action: function () {
+        Session.set('pageTitle', 'New donation drive');
         BlazeLayout.render('layout', {
             main: 'newDonationDrive'
+        });
+    }
+});
+
+signedIn.route('/school/:schoolId', {
+    name: 'schoolProfile',
+    action: function () {
+        Session.set('pageTitle', 'School');
+        BlazeLayout.render('layout', {
+            main: 'schoolProfile'
         });
     }
 });

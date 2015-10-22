@@ -1,11 +1,13 @@
 <template name="donationDriveEdit">
-    <h2>Edit</h2>
-    {{#if Template.subscriptionsReady}}
-        {{#with donationDoc}}
-            {{> quickForm schema="Schemas.DonationDriveSchema" doc=this id="donationDriveEditForm" type="method-update" meteormethod="updateDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
-            <button class="delete btn wave-effect waves-light teal">Delete drive</button>
-        {{/with}}
-    {{else}}
-        <p>Loading...</p>
-    {{/if}}
+    <div class="container">
+        <h2>Your donation drive</h2>
+        {{#if Template.subscriptionsReady}}
+            {{#with donationDoc}}
+                {{> quickForm schema="Schemas.DonationDriveSchema" doc=this id="donationDriveEditForm" type="method-update" meteormethod="updateDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
+                <button class="delete btn wave-effect waves-light teal">Delete drive</button>
+            {{/with}}
+        {{else}}
+            <p>Loading...</p>
+        {{/if}}
+    </div>
 </template>
