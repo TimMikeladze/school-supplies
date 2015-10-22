@@ -43,6 +43,19 @@ AutoForm.hooks({
         formToDoc: function (doc) {
             doc.schoolId = FlowRouter.getParam('schoolId');
             return doc;
+        },
+
+        onSubmit: function(insertDoc, updateDoc, currentDoc) {
+            var currentDateTime = new Date().getDate();
+            var startDate = insertDoc.startDate;
+            var endDate = insertDoc.endDate;
+            if (startDate > currentDateTime) {
+                this.done();
+            }
+            else
+            {
+                throw new Meteor.Error('Start date is less than today');
+            }
         }
     }
 });
