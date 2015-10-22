@@ -1,11 +1,13 @@
 <template name="categoryView">
     <li class="collection-item avatar">
-        <span class="title">{{title}}</span>
-        <p>{{description}}</p>
-        {{#each this.links}}
-            <a href="/{{this}}" target="_blank">{{this}}</a>
-        {{/each}}
-        <a class="s8 col btn wave-effect waves-light teal" href="{{pathFor '/home/admin/categories/:categoryId' categoryId=_id}}">Edit</a>
-        <button class="delete s8 col btn wave-effect waves-light teal">Delete</button>
+        <div>
+            <span class="title">{{title}}</span>
+            <p>{{description}}</p>
+            {{#each this.links}}
+                <a href="/{{this}}" target="_blank">{{this}}</a>
+            {{/each}}
+            <a class="right btn wave-effect waves-light teal" href="{{pathFor '/home/admin/categories/:categoryId' categoryId=_id}}">Edit</a>
+            <button class="right delete s8 col btn wave-effect waves-light teal">Delete</button>
+        </div>
     </li>
 </template>

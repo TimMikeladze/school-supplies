@@ -32,18 +32,10 @@ Template.home.helpers({
                 return school.donationDrives[i].title;
             }
         }
+    },
+    userHasNoDonations: function () {
+        return Collections.Donations.find({}).count() == 0;
     }
-    /*,
-    totalContributions: function () {
-        var allUserDonations = Collections.Donation.find({}).fetch();
-
-        for (var i in allUserDonations) {
-            var individualDonation = i.donatedCategories;
-            for (var j in individualDonation) {
-                console.log();
-            }
-        }
-    }*/
 });
 
 Template.home.onRendered(function () {

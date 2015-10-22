@@ -2,25 +2,30 @@
     <div class="container">
     <h4>My recent donations</h4>
     {{#if Template.subscriptionsReady}}
-            <ul class="collapsible popout" data-collapsible="accordion">
-                {{#each drivesDonatedTo}}
-                <li>
-                    <div class="collapsible-header">
-                        <p>{{donationDriveName}}</p>
-                    </div>
-                    <div class="collapsible-body">
-                        <ul>
-                            {{#each donatedCategories}}
-                            <li>
-                                <h6>{{categoryId}}</h6>
-                                <h6>{{quantity}}</h6>
-                            </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                </li>
-                {{/each}}
-            </ul>
+        {{#if userHasNoDonations}}
+            <h5>You have not donated anything...</h5>
+        {{/if}}
+        {{#each drivesDonatedTo}}
+        <div class="card medium">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="/images/bus.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{donationDriveName}}<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{donationDriveName}}<i class="material-icons right">close</i></span>
+                <ul>
+                    {{#each donatedCategories}}
+                    <li>
+                        <h5>{{categoryId}}</h5>
+                        <h5>{{quantity}}</h5>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        {{/each}}
         {{#if isInRole 'school-admin'}}
                 <h4>My schools</h4>
                 <ul class="collapsible popout" data-collapsible="accordion">
