@@ -50,6 +50,7 @@ AutoForm.hooks({
     donationDriveEditForm: {
         before: {
             'method-update': function (doc) {
+                doc.$set.id = FlowRouter.getParam('donationDriveId');
                 doc.$set.schoolId = FlowRouter.getParam('schoolId');
                 return doc;
             }
