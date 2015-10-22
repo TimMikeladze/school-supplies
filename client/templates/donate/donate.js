@@ -5,7 +5,9 @@ Template.donate.onCreated(function () {
         self.subscribe('categories');
     });
 
-    Session.set('donationStep', 'searchOrMatch');
+    if (Session.get('donationStep') != 'chooseCategories') {
+        Session.set('donationStep', 'searchOrMatch');
+    }
 });
 
 Template.donate.helpers({
