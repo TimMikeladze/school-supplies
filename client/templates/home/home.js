@@ -27,7 +27,6 @@ Template.home.helpers({
         return donationsCursor();
     },
     donationDriveName: function () {
-        debugger;
         var school = Collections.Schools.findOne({ _id: this.schoolId });
 
         for (var i in school.donationDrives) {
