@@ -1,5 +1,6 @@
 <template name="categoryEdit">
     <h2>Edit</h2>
+    <h7>Here you can modify a category that is available to school donation drives.</h7>
     {{#if Template.subscriptionsReady}}
         {{#with categoryDoc}}
             {{> quickForm collection="Collections.Categories" doc=this id="updateCategoryForm" type="update" omitFields="createdAt"}}
