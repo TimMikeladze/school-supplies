@@ -75,7 +75,7 @@ Template.donate.events({
             Session.set('donationStep', 'userAccount');
         }
     },
-    'click #donate-confirm-button': function(event, template) {
+    'click #donate-confirm-button': function (event, template) {
         event.preventDefault();
 
         var donation = Session.get('donation');
@@ -84,6 +84,17 @@ Template.donate.events({
         Collections.Donations.insert(donation);
 
         Session.set('donationStep', 'thankYou');
+    },
+    'click #match-button': function (event, template) {
+        event.preventDefault();
+
+        var schools = Collections.Schools.find().fetch();
+        var randomIndex = Math.floor(Math.random() * schools.length);
+        var school = schools[randomIndex];
+
+        Session.set('donationSelectedSchoolId', school._id);
+        Session.set('donationStep', 'chooseDrive');
+
     }
 });
 
