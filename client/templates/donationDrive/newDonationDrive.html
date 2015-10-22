@@ -1,6 +1,7 @@
 <template name="newDonationDrive">
     <div class="container">
         <h2>Start a new donation drive</h2>
+        <h7>Here you create donation drives for your school. Selecting supplies from our master list, you specify a donation goal for each category. If desired, create separate drives for each grade.</h7>
         {{> quickForm schema="Schemas.DonationDriveSchema" id="newDonationDriveForm" type="method" meteormethod="insertDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
     </div>
 </template>

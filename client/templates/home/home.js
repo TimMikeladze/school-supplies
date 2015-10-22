@@ -43,6 +43,10 @@ Template.home.helpers({
 });
 
 Template.home.onRendered(function () {
+    $('.collapsible').collapsible({
+        accordion : false
+    });
+
     this.autorun(function () {
         var schoolCount = schoolsCursor().count();
         var donationsCount = donationsCursor().count();

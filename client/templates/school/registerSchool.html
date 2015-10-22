@@ -1,6 +1,7 @@
 <template name="registerSchool">
     <div class="container">
         <h4>Register a school</h4>
+        <h7>Here you register with Supply Net by providing background information about your school. This is the information that will be available to the public, allowing your school to begin getting noticed by the numerous donors visiting the site daily.</h7>
         {{#autoForm schema=registerSchoolSchema id="registerSchoolForm" type="method" meteormethod="registerSchool"}}
             {{> afQuickField name="name"}}
             {{> afQuickField name="numberOfStudents"}}

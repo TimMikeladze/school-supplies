@@ -1,6 +1,7 @@
 <template name="donationDriveEdit">
     <div class="container">
-        <h2>Your donation drive</h2>
+        <h2>Edit your donation drive</h2>
+        <h7>Here you can modify your donation drive. Any mistakes you may have made before can be corrected here before the start of your drive.</h7>
         {{#if Template.subscriptionsReady}}
             {{#with donationDoc}}
                 {{> quickForm schema="Schemas.DonationDriveSchema" doc=this id="donationDriveEditForm" type="method-update" meteormethod="updateDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
