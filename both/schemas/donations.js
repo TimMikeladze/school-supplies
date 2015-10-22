@@ -1,7 +1,7 @@
 Schemas.DonatedCategorySchema = new SimpleSchema({
-    categoryName: {
+    categoryId: {
         type: String,
-        label: 'The name of the donated category'
+        label: 'The id of the donated category'
     },
     quantity: {
         type: Number,
@@ -55,3 +55,4 @@ Schemas.DonationSchema = new SimpleSchema({
 
 
 Collections.Donations = new Mongo.Collection('donations');
+Collections.Donations.attachSchema(Schemas.DonationSchema);

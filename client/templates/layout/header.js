@@ -9,6 +9,9 @@ Template.header.onRendered(function () {
         }
     });
 
+    $(".dropdown-button").dropdown({
+        belowOrigin: true
+    });
     $(".button-collapse").sideNav();
 });
 

@@ -25,6 +25,9 @@ Template.donate.helpers({
     },
     categoryById: function (categoryId) {
         return Collections.Categories.findOne(categoryId);
+    },
+    donationConfirmation: function () {
+        return Session.get('donation');
     }
 });
 
@@ -41,8 +44,44 @@ Template.donate.events({
         Session.set('donationSelectedDriveId', donationDriveId);
         Session.set('donationStep', 'chooseCategories');
     },
-    'click #donate-submit-button': function(event, template) {
+    'click #donate-submit-button': function (event, template) {
+        //TODO(tim) Fix this client side insert
         event.preventDefault();
+        var categories = [];
+
+        $('.donate-drive-category').each(function () {
+            if (this.value) {
+                var obj = {
+                    title: Collections.Categories.findOne(this.id).title,
+                    categoryId: this.id,
+                    quantity: this.value
+                };
+            }
+            categories.push(obj);
+        });
+
+        var donation = {
+            schoolId: Session.get('donationSelectedSchoolId'),
+            donationDriveId: Session.get('donationSelectedDriveId'),
+            donatedCategories: categories
+        };
+
+        Session.set('donation', donation);
+        if (Meteor.user()) {
+            Session.set('donationStep', 'confirmDonation');
+        } else {
+            Session.set('donationStep', 'userAccount');
+        }
+    },
+    'click #donate-confirm-button': function(event, template) {
+        event.preventDefault();
+
+        var donation = Session.get('donation');
+        donation.donorId = Meteor.userId();
+
+        Collections.Donations.insert(donation);
+
+        Session.set('donationStep', 'thankYou');
     }
 });
 

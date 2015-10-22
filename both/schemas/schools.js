@@ -211,7 +211,7 @@ Schemas.SchoolSchema = new SimpleSchema({
 
 Collections.Schools = new Mongo.Collection('schools');
 Collections.Schools.attachSchema(Schemas.SchoolSchema);
-Collections.Schools.initEasySearch(['name'], {
+Collections.Schools.initEasySearch(['name', 'district'], {
     'limit': 20,
     'use': 'mongo-db'
 });
