@@ -15,7 +15,25 @@ Schemas.AddressSchema = new SimpleSchema({
     state: {
         type: String,
         label: 'The state of the address',
-        regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/
+        regEx: /^A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]$/,
+        allowedValues: ['AL', 'AK', 'AS', 'AZ', 'AR', 'AA', 'AE', 'AP', 'CA', 'CO', 
+                        'CT', 'DE', 'DC', 'FL', 'FM', 'GA', 'GU', 'HI', 'IA', 'ID', 
+                        'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 
+                        'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 
+                        'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 
+                        'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 
+                        'WV', 'WY'],
+        autoform: {
+            options: {
+                AL:"AL", AK:"AK", AS:"AS", AZ:'AZ', AR:'AR', AA:'AA', AE:'AE', AP:'AP', CA:'CA', CO:'CO',
+                CT:'CT', DE:'DE', DC:'DC', FL:'FL', FM:'FM', GA:'GA', GU:'GU', HI:'HI', IA:'IA', ID:'ID', 
+                IL:'IL', IN:'IN', KS:'KS', KY:'KY', LA:'LA', MA:'MA', MD:'MD', ME:'ME', MH:'MH', MI:'MI',
+                MN:'MN', MO:'MO', MP:'MP', MS:'MS', MT:'MT', NC:'NC', ND:'ND', NE:'NE', NH:'NH', NJ:'NJ', 
+                NM:'NM', NV:'NV', NY:'NY', OH:'OH', OK:'OK', OR:'OR', PA:'PA', PR:'PR', PW:'PW', RI:'RI', 
+                SC:'SC', SD:'SD', TN:'TN', TX:'TX', UT:'UT', VA:'VA', VI:'VI', VT:'VT', WA:'WA', WI:'WI', 
+                WV:'WV',  WY:'WY' 
+               }
+            }
     },
     zipCode: {
         type: String,

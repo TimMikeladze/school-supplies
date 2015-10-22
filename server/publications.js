@@ -15,3 +15,9 @@ Meteor.publish('schools', function () {
         return;
     }
 });
+
+Meteor.publish('school', function (schoolId) {
+	console.log(Collections.Schools.findOne({_id: schoolId}));
+
+    return Collections.Schools.find({_id:schoolId});
+});

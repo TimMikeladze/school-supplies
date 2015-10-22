@@ -132,5 +132,14 @@ adminSection.route('/categories/:categoryId', {
         BlazeLayout.render('layout', {
             main: 'categoryEdit'
         });
+   }
+});
+
+signedIn.route('/school-profile/:schoolId', {
+	name: 'schoolProfile',
+    action: function () {
+        BlazeLayout.render('layout', {
+        	main: 'schoolProfile',  
+        });
     }
 });

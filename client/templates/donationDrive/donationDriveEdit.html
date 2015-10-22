@@ -2,7 +2,7 @@
     <h2>Edit</h2>
     {{#if Template.subscriptionsReady}}
         {{#with donationDoc}}
-            {{> quickForm schema="Schemas.DonationDriveSchema" doc=this id="donationDriveEditForm" type="method-update" meteormethod="updateDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields}}
+            {{> quickForm schema="Schemas.DonationDriveSchema" doc=this id="donationDriveEditForm" type="method-update" meteormethod="updateDonationDrive" fields=donationDriveFormFields omitFields=donationDriveFormOmitFields validation=submit}}
             <button class="delete btn wave-effect waves-light teal">Delete drive</button>
         {{/with}}
     {{else}}

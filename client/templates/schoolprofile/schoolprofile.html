@@ -1,0 +1,10 @@
+<template name="schoolProfile">
+	<div class="container"> 
+		<h2>School profile</h2>
+			{{#if Template.subscriptionsReady}} 
+				{{schoolProfileDoc.name}}
+			{{else}}
+			...Loading
+			{{/if}} 
+	</div>
+</template>	
