@@ -1,0 +1,23 @@
+<template name="schoolProfile">
+    <div class="container">
+        {{#if Template.subscriptionsReady}}
+            {{#with school}}
+                <h2>{{name}}</h2>
+                <h4>{{address.city}}, {{address.state}}</h4>
+                <ul class="collection with-header">
+                    <li class="collection-header"><h4>Donation drives</h4></li>
+                    {{#each donationDrives}}
+                    <div>
+                        <li class="collection-item">
+                            <div>
+                                {{title}}: {{description}}
+                                <a href="#" class="secondary-content">Donate</a>
+                            </div>
+                        </li>
+                    </div>
+                    {{/each}}
+                </ul>
+            {{/with}}
+        {{/if}}
+    </div>
+</template>
