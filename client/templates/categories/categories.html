@@ -1,6 +1,7 @@
 <template name="categories">
     <div class="container">
         <h2>Categories</h2>
+        <h7>Here you specify categories you would like to receive donations for. We suggest that any category that does not currently exist in our system, you email us with the desired category information. In the interim, simply add the cost of your donation goal for that item to the desired monetary contribution so you can procure the item separately.</h7>
          {{> quickForm collection="Collections.Categories" id="createCategoryForm" type="insert" omitFields="createdAt"}}
     </div>
     {{#if Template.subscriptionsReady}}
