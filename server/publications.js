@@ -19,6 +19,11 @@ Meteor.publish('donations', function () {
         return;
     }
 });
+
+Meteor.publish('schools', function () {
+    return Collections.Schools.find({});
+});
+
 Meteor.publish('school', function (schoolId) {
     return Collections.Schools.find({_id: schoolId});
 });
