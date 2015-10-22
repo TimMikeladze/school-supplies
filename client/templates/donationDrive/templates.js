@@ -40,9 +40,20 @@ Template.newDonationDrive.onCreated(function () {
 
 AutoForm.hooks({
     newDonationDriveForm:  {
-        formToDoc: function (doc) {
-            doc.schoolId = FlowRouter.getParam('schoolId');
-            return doc;
+        before: {
+            'method': function (doc) {
+                doc.schoolId = FlowRouter.getParam('schoolId');
+                return doc;
+            }
+        }
+    },
+    donationDriveEditForm: {
+        before: {
+            'method-update': function (doc) {
+                doc.$set.id = FlowRouter.getParam('donationDriveId');
+                doc.$set.schoolId = FlowRouter.getParam('schoolId');
+                return doc;
+            }
         }
     }
 });
