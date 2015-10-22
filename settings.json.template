@@ -1,10 +1,11 @@
 {
   "public": {},
+  "siteName": "Supply Net",
   "admin": {
     "email": "admin@admin.com",
     "password": "password",
     "username": "admin",
-    "firstName": "Tom",
+    "firstName": "Site",
     "lastName": "Admin"
   }
 }
